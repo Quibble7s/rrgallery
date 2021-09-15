@@ -1,11 +1,10 @@
 import React from "react";
 
+import { Provider } from "react-redux";
+import { store } from "./helpers/store";
+
 function App() {
-  return (
-    <div className='App'>
-      <h1>Hello World</h1>
-    </div>
-  );
+  return <Provider store={store}></Provider>;
 }
 
 export default App;
