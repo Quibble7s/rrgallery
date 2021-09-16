@@ -1,0 +1,65 @@
+@use './abstract/index' as *;
+
+.text {
+  color: $black;
+  &--center {
+    text-align: center;
+  }
+  &--right {
+    text-align: right;
+  }
+  &--left {
+    text-align: left;
+  }
+  &--justify {
+    text-align: justify;
+  }
+  &--decoration {
+    &-none {
+      text-decoration: none;
+    }
+  }
+  &--size {
+    &-title {
+      font-size: 2rem;
+      font-weight: $font-weight-bold;
+    }
+    &-subtitle {
+      font-size: 1.5rem;
+      font-weight: $font-weight-semi-bold;
+    }
+    &-regular {
+      font-size: 1rem;
+      font-weight: $font-weight-regular;
+    }
+    &-regular-light {
+      font-size: 1rem;
+      font-weight: $font-weight-light;
+    }
+    &-small {
+      font-size: 0.85rem;
+      font-weight: $font-weight-regular;
+    }
+    &-small-light {
+      font-size: 0.85rem;
+      font-weight: $font-weight-light;
+    }
+  }
+  &--color {
+    &-primary {
+      color: $whine-extra-light;
+      &-dark {
+        color: $whine-light;
+      }
+      &-extra-dark {
+        color: $whine;
+      }
+    }
+    &-white {
+      color: $white;
+    }
+    &-black {
+      color: $black;
+    }
+  }
+}
