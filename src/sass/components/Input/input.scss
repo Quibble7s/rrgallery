@@ -1,0 +1,17 @@
+@use '../../abstract/index' as *;
+
+.input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: $black;
+  width: 100%;
+  &-field {
+    border-bottom: 1px solid $black;
+    margin-top: $margin-large;
+    padding: $padding-small;
+  }
+  &--active {
+    border-bottom: 1px solid $whine-extra-light;
+  }
+}

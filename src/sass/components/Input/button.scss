@@ -1,0 +1,11 @@
+@use '../../abstract/index' as *;
+
+.btn {
+  border-radius: 16px;
+  border: none;
+  margin-top: $margin-large;
+  padding: $padding-small;
+  cursor: pointer;
+  width: 50%;
+  background-color: $whine-extra-light;
+}
