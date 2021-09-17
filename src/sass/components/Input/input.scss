@@ -1,17 +1,36 @@
 @use '../../abstract/index' as *;
 
+@keyframes input-field-active {
+  0% {
+    border-bottom: 1px solid $black;
+  }
+  100% {
+    border-bottom: 1px solid $whine-extra-light;
+  }
+}
+
+@keyframes input-field-inactive {
+  0% {
+    border-bottom: 1px solid $whine-extra-light;
+  }
+  100% {
+    border-bottom: 1px solid $black;
+  }
+}
+
 .input {
   border: none;
   outline: none;
   background-color: transparent;
+  resize: none;
   color: $black;
   width: 100%;
   &-field {
-    border-bottom: 1px solid $black;
+    animation: input-field-inactive forwards 200ms linear;
     margin-top: $margin-large;
     padding: $padding-small;
   }
   &--active {
-    border-bottom: 1px solid $whine-extra-light;
+    animation: input-field-active forwards 200ms linear;
   }
 }

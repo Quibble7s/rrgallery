@@ -1,19 +1,15 @@
 import React from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-import GoogleButton from "react-google-button";
-
+import { SignInWithEmailAndPassword } from "../helpers/Actions/Auth";
+import { useOnElementActive } from "../hooks/useOnElementActive";
 import Button from "../components/Buttons/Button";
 
 import "../sass/pages/login.scss";
 import "../sass/components/Input/input.scss";
 import "../sass/text.scss";
-import {
-  SignInWithEmailAndPassword,
-  SignInWithGoogle,
-} from "../helpers/Actions/Auth";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
 
 const AuthLogin = () => {
   const dispatch = useDispatch();
@@ -32,9 +28,10 @@ const AuthLogin = () => {
     });
   };
 
+  const [onFocus, onBlur] = useOnElementActive("input--active");
   return (
     <div className='container --w-100'>
-      <div className='logo'>
+      <div className='logo --mb-large'>
         <img
           className='logo__image'
           src='./assets/img/gallery.svg'
@@ -46,6 +43,8 @@ const AuthLogin = () => {
       </div>
       <form onSubmit={onLoginHandler} className='login'>
         <input
+          onFocus={onFocus}
+          onBlur={onBlur}
           className='input input-field'
           type='email'
           placeholder='email'
@@ -55,6 +54,8 @@ const AuthLogin = () => {
           onChange={onChangeHandler}
         />
         <input
+          onFocus={onFocus}
+          onBlur={onBlur}
           className='input input-field'
           type='password'
           placeholder='password'

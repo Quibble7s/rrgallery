@@ -5,6 +5,7 @@ import Button from "../components/Buttons/Button";
 
 import { Register } from "../helpers/Actions/Auth";
 import { useOnChange } from "../hooks/useOnChange";
+import { useOnElementActive } from "../hooks/useOnElementActive";
 
 import "../sass/components/Input/input.scss";
 import "../sass/pages/register.scss";
@@ -29,6 +30,7 @@ const AuthRegister = () => {
     }
     dispatch(Register(data.email, data.password, data.username));
   };
+  const [onFocus, onBlur] = useOnElementActive("input--active");
   return (
     <div className='container --w-100'>
       <form onSubmit={onRegisterHandler} className='register'>
@@ -36,6 +38,8 @@ const AuthRegister = () => {
           Register
         </h1>
         <input
+          onFocus={onFocus}
+          onBlur={onBlur}
           onChange={onChangeHandler}
           className='input input-field'
           name='username'
@@ -47,6 +51,8 @@ const AuthRegister = () => {
           autoComplete='off'
         />
         <input
+          onFocus={onFocus}
+          onBlur={onBlur}
           onChange={onChangeHandler}
           className='input input-field'
           name='email'
@@ -58,6 +64,8 @@ const AuthRegister = () => {
           autoComplete='off'
         />
         <input
+          onFocus={onFocus}
+          onBlur={onBlur}
           onChange={onChangeHandler}
           className='input input-field'
           name='confirmemail'
@@ -69,6 +77,8 @@ const AuthRegister = () => {
           autoComplete='off'
         />
         <input
+          onFocus={onFocus}
+          onBlur={onBlur}
           onChange={onChangeHandler}
           className='input input-field'
           name='password'
@@ -80,6 +90,8 @@ const AuthRegister = () => {
           autoComplete='off'
         />
         <input
+          onFocus={onFocus}
+          onBlur={onBlur}
           onChange={onChangeHandler}
           className='input input-field'
           name='confirmpassword'
