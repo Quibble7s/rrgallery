@@ -9,7 +9,6 @@ import "../sass/pages/login.scss";
 import "../sass/components/Input/input.scss";
 import "../sass/text.scss";
 import {
-  Login,
   SignInWithEmailAndPassword,
   SignInWithGoogle,
 } from "../helpers/Actions/Auth";
@@ -38,10 +37,17 @@ const AuthLogin = () => {
 
   return (
     <div className='container --w-100'>
-      <form onSubmit={onLoginHandler} className='login'>
-        <h1 className='text text--size-subtitle text--color-primary --mb-large'>
-          Sign In
+      <div className='logo'>
+        <img
+          className='logo__image'
+          src='./assets/img/gallery.svg'
+          alt='logo'
+        />
+        <h1 className='text text--size-subtitle text--color-primary'>
+          rrgallery
         </h1>
+      </div>
+      <form onSubmit={onLoginHandler} className='login'>
         <input
           className='input input-field'
           type='email'
@@ -62,15 +68,15 @@ const AuthLogin = () => {
         />
         <Button
           className='btn text text--size-small text--color-white'
-          value='Login'
+          value='Log in'
           type='submit'
         />
 
         <Link
-          className='text text--size-small text--decoration-none --mt-small'
+          className='text text--size-small text--decoration-none --mt-regular'
           to='/register'>
           Don't have an account?{" "}
-          <span className='text--decoration-underline'>Register...</span>
+          <span className='text--decoration-underline'>Register</span>...
         </Link>
         {/* <p className='text text--size-small --mt-regular'>Or</p> */}
         {/* <GoogleButton onClick={onGoogleLoginHandler} className='--mt-regular' /> */}
