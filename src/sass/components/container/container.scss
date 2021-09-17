@@ -68,4 +68,7 @@ body {
   &--bottom {
     @include background-bottom();
   }
+  &--top {
+    @include background-top();
+  }
 }

@@ -78,8 +78,8 @@ const AuthLogin = () => {
         </Link>
       </form>
       <img
-        className='background--bottom'
-        src='./assets/img/background/login-background.svg'
+        className='background--top'
+        src='./assets/img/background/login-background-top.svg'
         alt=''
       />
     </div>
