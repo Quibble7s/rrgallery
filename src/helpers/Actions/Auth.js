@@ -2,6 +2,8 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   signInWithPopup,
+  createUserWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { GoogleAuthProvider } from "@firebase/auth";
 
@@ -59,5 +61,18 @@ export const SignInWithGoogle = () => {
         // const credential = GoogleAuthProvider.credentialFromError(error);
         //give feedback to users when login fails
       });
+  };
+};
+
+export const Register = (email, password, displayName) => {
+  return (dispatch) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        updateProfile(user, { displayName: displayName, photoURL: null });
+        dispatch(
+          Login(user.uid, user.displayName, user.accessToken, user.email),
+        );
+      })
+      .catch((err) => {});
   };
 };
