@@ -72,7 +72,7 @@ const AuthLogin = () => {
           Don't have an account?{" "}
           <span className='text--decoration-underline'>Register...</span>
         </Link>
-        <p className='text text--size-small --mt-regular'>Or</p>
+        {/* <p className='text text--size-small --mt-regular'>Or</p> */}
         {/* <GoogleButton onClick={onGoogleLoginHandler} className='--mt-regular' /> */}
       </form>
       <img
