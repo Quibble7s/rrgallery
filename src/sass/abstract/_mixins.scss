@@ -5,3 +5,27 @@
   width: 100%;
   transform: translate(0, -100%);
 }
+
+@mixin background-color-in($from, $to, $duration) {
+  @keyframes bg-in {
+    0% {
+      background-color: $from;
+    }
+    100% {
+      background-color: $to;
+    }
+  }
+  animation: bg-in forwards $duration linear;
+}
+
+@mixin background-color-out($from, $to, $duration) {
+  @keyframes bg-out {
+    0% {
+      background-color: $from;
+    }
+    100% {
+      background-color: $to;
+    }
+  }
+  animation: bg-out forwards $duration linear;
+}
