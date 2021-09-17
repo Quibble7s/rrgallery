@@ -25,9 +25,6 @@ const AuthLogin = () => {
     e.preventDefault();
     dispatch(SignInWithEmailAndPassword(data.email, data.password));
   };
-  const onGoogleLoginHandler = () => {
-    dispatch(SignInWithGoogle());
-  };
   const onChangeHandler = (e) => {
     setData({
       ...data,
@@ -67,7 +64,7 @@ const AuthLogin = () => {
           onChange={onChangeHandler}
         />
         <Button
-          className='btn text text--size-small text--color-white'
+          className='btn text--size-small btn--primary'
           value='Log in'
           type='submit'
         />
@@ -78,8 +75,6 @@ const AuthLogin = () => {
           Don't have an account?{" "}
           <span className='text--decoration-underline'>Register</span>...
         </Link>
-        {/* <p className='text text--size-small --mt-regular'>Or</p> */}
-        {/* <GoogleButton onClick={onGoogleLoginHandler} className='--mt-regular' /> */}
       </form>
       <img
         className='background--bottom'

@@ -1,11 +1,19 @@
 @use '../../abstract/index' as *;
 
 .btn {
+  color: $black;
   border-radius: 16px;
   border: none;
   margin-top: $margin-large;
   padding: $padding-small;
   cursor: pointer;
   width: 50%;
-  background-color: $whine-extra-light;
+  &--primary {
+    color: $white;
+    background-color: $whine-extra-light;
+    @include background-color-out($whine-light, $whine-extra-light, 200ms);
+    &:hover {
+      @include background-color-in($whine-extra-light, $whine-light, 200ms);
+    }
+  }
 }
