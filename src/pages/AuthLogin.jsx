@@ -73,7 +73,7 @@ const AuthLogin = () => {
           <span className='text--decoration-underline'>Register...</span>
         </Link>
         <p className='text text--size-small --mt-regular'>Or</p>
-        <GoogleButton onClick={onGoogleLoginHandler} className='--mt-regular' />
+        {/* <GoogleButton onClick={onGoogleLoginHandler} className='--mt-regular' /> */}
       </form>
       <img
         className='background--bottom'

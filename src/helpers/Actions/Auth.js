@@ -13,12 +13,14 @@ auth.languageCode = "it";
 
 const googleProvider = new GoogleAuthProvider();
 
-export const Login = (uid, displayName) => {
+export const Login = (uid, displayName, token, mail) => {
   return {
     type: authTypes.login,
     payload: {
       uid: uid,
+      accessToken: token,
       displayName: displayName,
+      email: mail,
     },
   };
 };
@@ -27,8 +29,9 @@ export const SignInWithEmailAndPassword = (email, password) => {
   return (dispatch) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(async ({ user }) => {
-        console.log(user);
-        dispatch(Login(user.uid, user.displayName));
+        dispatch(
+          Login(user.uid, user.displayName, user.accessToken, user.email),
+        );
       })
       .catch((error) => {
         //give feedback to users when login fails
@@ -45,14 +48,15 @@ export const SignInWithGoogle = () => {
         );
         const token = credential.accessToken;
         const user = result.user;
-        console.log(user);
-        dispatch(Login(user.uid, user.displayName));
+        dispatch(
+          Login(user.uid, user.displayName, user.accessToken, user.email),
+        );
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // const email = error.email;
+        // const credential = GoogleAuthProvider.credentialFromError(error);
         //give feedback to users when login fails
       });
   };
