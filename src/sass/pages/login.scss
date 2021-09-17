@@ -1,7 +1,20 @@
+@use '../abstract/index' as *;
+
 .login {
   width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  &__image {
+    width: 32px;
+    height: 32px;
+  }
 }
