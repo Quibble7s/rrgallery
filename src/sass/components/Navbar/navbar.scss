@@ -1,0 +1,8 @@
+@use '../../abstract/index' as *;
+
+.nav {
+  width: 100%;
+  padding: $padding-regular;
+  height: auto;
+  background-color: $whine-extra-light;
+}
