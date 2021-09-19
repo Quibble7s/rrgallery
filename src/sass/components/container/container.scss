@@ -11,10 +11,15 @@ body,
   width: 100%;
   min-height: 100vh;
   background-color: $white;
+  overflow-x: hidden;
 }
 
 body {
   font-family: "Work Sans", sans-serif;
+}
+
+::placeholder {
+  color: gray;
 }
 
 .container {
@@ -70,5 +75,12 @@ body {
   }
   &--top {
     @include background-top();
+  }
+}
+
+@media (min-width: 900px) {
+  .container {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }

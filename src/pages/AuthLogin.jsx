@@ -37,7 +37,7 @@ const AuthLogin = () => {
           src='./assets/img/gallery.svg'
           alt='logo'
         />
-        <h1 className='text text--size-subtitle text--color-primary'>
+        <h1 className='text text--size-subtitle text--color-primary text--center'>
           rrgallery
         </h1>
       </div>
@@ -71,10 +71,13 @@ const AuthLogin = () => {
         />
 
         <Link
-          className='text text--size-small text--decoration-none --mt-regular'
+          className='text text--size-small text--decoration-none text--center --mt-regular'
           to='/register'>
           Don't have an account?{" "}
-          <span className='text--decoration-underline'>Register</span>...
+          <span className='text--decoration-underline text--hover-primary'>
+            Register
+          </span>
+          ...
         </Link>
       </form>
       <img

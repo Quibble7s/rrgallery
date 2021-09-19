@@ -34,7 +34,7 @@ const AuthRegister = () => {
   return (
     <div className='container --w-100'>
       <form onSubmit={onRegisterHandler} className='register'>
-        <h1 className='text text--size-subtitle text--color-primary --mb-large'>
+        <h1 className='text text--size-subtitle text--color-primary text--center --mb-regular'>
           Register
         </h1>
         <input
@@ -108,10 +108,13 @@ const AuthRegister = () => {
           type='submit'
         />
         <Link
-          className='text text--size-small text--decoration-none --mt-regular'
+          className='text text--size-small text--decoration-none text--center --mt-regular'
           to='/login'>
           Already have an account?{" "}
-          <span className='text--decoration-underline'>Log in</span>...
+          <span className='text--decoration-underline text--hover-primary'>
+            Log in
+          </span>
+          ...
         </Link>
       </form>
       <img
