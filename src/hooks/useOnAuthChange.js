@@ -4,12 +4,12 @@ import { useEffect } from "react";
 import { Login } from "../helpers/Actions/Auth";
 import { useDispatch } from "react-redux";
 
-export const useOnSignedIn = () => {
+export const useOnAuthChange = () => {
   const dispatch = useDispatch();
   const [loged, setLoged] = useState(false);
+  const auth = getAuth();
 
   useEffect(() => {
-    const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(Login(user.uid, user.displayName, user.email));
@@ -18,7 +18,7 @@ export const useOnSignedIn = () => {
         setLoged(false);
       }
     });
-  }, []);
+  }, [auth, dispatch]);
 
   return loged;
 };

@@ -4,6 +4,7 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   updateProfile,
+  signOut,
 } from "firebase/auth";
 import { GoogleAuthProvider } from "@firebase/auth";
 
@@ -26,6 +27,15 @@ export const Login = (uid, displayName, mail) => {
   };
 };
 
+export const Logout = async () => {
+  await signOut(auth);
+  return (dispatch) => {
+    dispatch({
+      type: authTypes.logout(),
+    });
+  };
+};
+
 export const SignInWithEmailAndPassword = (email, password) => {
   return (dispatch) => {
     signInWithEmailAndPassword(auth, email, password)
@@ -45,7 +55,6 @@ export const SignInWithGoogle = () => {
         const credential = await GoogleAuthProvider.credentialFromResult(
           result,
         );
-        const token = credential.accessToken;
         const user = result.user;
         dispatch(Login(user.uid, user.displayName, user.email));
       })
@@ -62,8 +71,8 @@ export const SignInWithGoogle = () => {
 export const Register = (email, password, displayName) => {
   return (dispatch) => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        updateProfile(user, { displayName: displayName, photoURL: null });
+      .then(async ({ user }) => {
+        await updateProfile(user, { displayName: displayName, photoURL: null });
         dispatch(Login(user.uid, user.displayName, user.email));
       })
       .catch((err) => {});
