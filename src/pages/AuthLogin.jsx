@@ -31,17 +31,17 @@ const AuthLogin = () => {
   const [onFocus, onBlur] = useOnElementActive("input--active");
   return (
     <div className='container --w-100'>
-      <div className='logo --mb-large'>
-        <img
-          className='logo__image'
-          src='./assets/img/gallery.svg'
-          alt='logo'
-        />
-        <h1 className='text text--size-subtitle text--color-primary text--center'>
-          rrgallery
-        </h1>
-      </div>
       <form onSubmit={onLoginHandler} className='login'>
+        <div className='logo --mb-large'>
+          <img
+            className='logo__image'
+            src='./assets/img/gallery.svg'
+            alt='logo'
+          />
+          <h1 className='text text--size-subtitle text--color-primary text--center'>
+            rrgallery
+          </h1>
+        </div>
         <input
           onFocus={onFocus}
           onBlur={onBlur}
