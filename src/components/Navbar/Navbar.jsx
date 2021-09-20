@@ -1,15 +1,27 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-import Button from "../Buttons/Button";
+import ImageButton from "../Buttons/ImageButton";
+import SearchBar from "../Input/SearchBar";
+import NavbarProfile from "./NavbarProfile";
 
 import "../../sass/components/Navbar/navbar.scss";
-import { Logout } from "../../helpers/Actions/Auth";
 
 const Navbar = () => {
+  const { auth } = useSelector((state) => state);
   return (
     <nav className='nav'>
-      <h1 className='text text--size-title text--primary'>rrgallery</h1>
-      <Button value='Logout' className='btn' onClick={Logout} />
+      <h1 className='text text--size-title text--color-white'>rrgallery</h1>
+      <form className='search-form'>
+        <ImageButton
+          className='btn btn--circular'
+          imgSrc='./assets/img/search.svg'
+          value='Search'
+          type='submit'
+        />
+        <SearchBar />
+      </form>
+      <NavbarProfile uid={auth.uid} photoURL={auth.photoURL} />
     </nav>
   );
 };
