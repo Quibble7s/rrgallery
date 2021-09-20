@@ -2,8 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import GoogleButton from "react-google-button";
 
-import { SignInWithEmailAndPassword } from "../helpers/Actions/Auth";
+import {
+  SignInWithEmailAndPassword,
+  SignInWithGoogle,
+} from "../helpers/Actions/Auth";
 import { useOnElementActive } from "../hooks/useOnElementActive";
 import Button from "../components/Buttons/Button";
 
@@ -69,7 +73,6 @@ const AuthLogin = () => {
           value='Log in'
           type='submit'
         />
-
         <Link
           className='text text--size-small text--decoration-none text--center --mt-regular'
           to='/register'>
@@ -79,7 +82,9 @@ const AuthLogin = () => {
           </span>
           ...
         </Link>
+        <GoogleButton onClick={dispatch(SignInWithGoogle)} />
       </form>
+
       <img
         className='background--top'
         src='./assets/img/background/login-background-top.svg'
