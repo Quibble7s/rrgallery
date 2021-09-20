@@ -34,7 +34,7 @@ const AuthLogin = () => {
 
   const [onFocus, onBlur] = useOnElementActive("input--active");
   return (
-    <div className='container --w-100'>
+    <div className='container --w-100 --center'>
       <form onSubmit={onLoginHandler} className='login'>
         <div className='logo --mb-large'>
           <img
@@ -49,7 +49,7 @@ const AuthLogin = () => {
         <input
           onFocus={onFocus}
           onBlur={onBlur}
-          className='input input-field'
+          className='input input-field --mt-regular'
           type='email'
           placeholder='email'
           name='email'
@@ -60,7 +60,7 @@ const AuthLogin = () => {
         <input
           onFocus={onFocus}
           onBlur={onBlur}
-          className='input input-field'
+          className='input input-field --mt-regular'
           type='password'
           placeholder='password'
           name='password'
@@ -69,7 +69,7 @@ const AuthLogin = () => {
           onChange={onChangeHandler}
         />
         <Button
-          className='btn text--size-small btn--primary'
+          className='btn text--size-small btn--primary --mt-regular --w-50 btn--radius-8'
           value='Log in'
           type='submit'
         />
@@ -82,7 +82,11 @@ const AuthLogin = () => {
           </span>
           ...
         </Link>
-        <GoogleButton onClick={dispatch(SignInWithGoogle)} />
+        <p className='text text--size-regular --mt-regular'>Or</p>
+        <GoogleButton
+          className='--mt-regular'
+          onClick={dispatch(SignInWithGoogle)}
+        />
       </form>
 
       <img

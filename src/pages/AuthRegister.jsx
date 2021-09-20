@@ -32,7 +32,7 @@ const AuthRegister = () => {
   };
   const [onFocus, onBlur] = useOnElementActive("input--active");
   return (
-    <div className='container --w-100'>
+    <div className='container --w-100 --center'>
       <form onSubmit={onRegisterHandler} className='register'>
         <h1 className='text text--size-subtitle text--color-primary text--center --mb-regular'>
           Register
@@ -54,7 +54,7 @@ const AuthRegister = () => {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field'
+          className='input input-field --mt-regular'
           name='email'
           id='email'
           type='email'
@@ -67,7 +67,7 @@ const AuthRegister = () => {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field'
+          className='input input-field --mt-regular'
           name='confirmemail'
           id='confirmemail'
           type='email'
@@ -80,7 +80,7 @@ const AuthRegister = () => {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field'
+          className='input input-field --mt-regular'
           name='password'
           id='password'
           type='password'
@@ -93,7 +93,7 @@ const AuthRegister = () => {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field'
+          className='input input-field --mt-regular'
           name='confirmpassword'
           id='confirmpassword'
           type='password'
@@ -103,7 +103,7 @@ const AuthRegister = () => {
           autoComplete='off'
         />
         <Button
-          className='btn text--size-small btn--primary'
+          className='btn text--size-small btn--primary --mt-regular --w-50 btn--radius-8'
           value='Register'
           type='submit'
         />

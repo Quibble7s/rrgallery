@@ -27,6 +27,13 @@ body {
   background-color: transparent;
 }
 
+.--center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .--w {
   &-100 {
     width: 100%;
