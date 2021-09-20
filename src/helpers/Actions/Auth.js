@@ -16,13 +16,14 @@ auth.languageCode = "it";
 
 const googleProvider = new GoogleAuthProvider();
 
-export const Login = (uid, displayName, mail) => {
+export const Login = (uid, displayName, mail, photoURL) => {
   return {
     type: authTypes.login,
     payload: {
       uid: uid,
       displayName: displayName,
       email: mail,
+      photoURL: photoURL,
     },
   };
 };
@@ -40,7 +41,7 @@ export const SignInWithEmailAndPassword = (email, password) => {
   return (dispatch) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(async ({ user }) => {
-        dispatch(Login(user.uid, user.displayName, user.email));
+        dispatch(Login(user.uid, user.displayName, user.email, user.photoURL));
       })
       .catch((error) => {
         //give feedback to users when login fails
@@ -56,7 +57,7 @@ export const SignInWithGoogle = () => {
           result,
         );
         const user = result.user;
-        dispatch(Login(user.uid, user.displayName, user.email));
+        dispatch(Login(user.uid, user.displayName, user.email, user.photoURL));
       })
       .catch((error) => {
         // const errorCode = error.code;
@@ -73,7 +74,7 @@ export const Register = (email, password, displayName) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then(async ({ user }) => {
         await updateProfile(user, { displayName: displayName, photoURL: null });
-        dispatch(Login(user.uid, user.displayName, user.email));
+        dispatch(Login(user.uid, user.displayName, user.email, user.photoURL));
       })
       .catch((err) => {});
   };
