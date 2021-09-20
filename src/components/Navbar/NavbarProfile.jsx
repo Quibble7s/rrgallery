@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
@@ -8,12 +9,24 @@ import Button from "../Buttons/Button";
 
 const NavbarProfile = ({ uid, photoURL }) => {
   const dropdownRef = useRef();
-  const onProfileClick = () => {
-    dropdownRef.current.classList.toggle("nav-profile-dropdown--active");
-  };
+  const profileRef = useRef();
+  useEffect(() => {
+    document.addEventListener("click", (e) => {
+      if (
+        e.target.id === profileRef.current.id &&
+        !dropdownRef.current.classList.contains("nav-profile-dropdown--active")
+      ) {
+        dropdownRef.current.classList.add("nav-profile-dropdown--active");
+      } else {
+        dropdownRef.current.classList.remove("nav-profile-dropdown--active");
+      }
+    });
+  }, []);
   return (
-    <div onClick={onProfileClick} className='nav-profile'>
+    <div className='nav-profile'>
       <img
+        ref={profileRef}
+        id='profile'
         className='nav-profile__pfp'
         src={photoURL ? photoURL : "./assets/img/defaultpfp.svg"}
         alt='pfp'
