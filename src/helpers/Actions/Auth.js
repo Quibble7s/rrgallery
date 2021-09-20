@@ -32,7 +32,7 @@ export const Logout = async () => {
   await signOut(auth);
   return (dispatch) => {
     dispatch({
-      type: authTypes.logout(),
+      type: authTypes.logout,
     });
   };
 };
