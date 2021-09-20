@@ -1,7 +1,6 @@
 @use './abstract/index' as *;
 
 .text {
-  width: 100%;
   color: $black;
   transition: color 200ms ease-in-out;
   &--hover {

@@ -2,12 +2,30 @@
 
 .btn {
   color: $black;
-  border-radius: 16px;
   border: none;
-  margin-top: $margin-large;
   padding: $padding-small;
   cursor: pointer;
-  width: 50%;
+  &--radius {
+    &-8 {
+      border-radius: 8px;
+    }
+    &-16 {
+      border-radius: 16px;
+    }
+    &-32 {
+      border-radius: 32px;
+    }
+  }
+  &__image--circular {
+    width: 100%;
+    border-radius: 50%;
+  }
+  &--circular {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+  }
   &--primary {
     color: $white;
     background-color: $whine-extra-light;

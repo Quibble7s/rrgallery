@@ -1,8 +1,59 @@
 @use '../../abstract/index' as *;
 
+@keyframes pfp-slide-in {
+  0% {
+    opacity: 0;
+    top: 84px;
+  }
+  100% {
+    opacity: 1;
+    top: 72px;
+  }
+}
+
 .nav {
   width: 100%;
   padding: $padding-regular;
   height: auto;
   background-color: $whine-extra-light;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $margin-regular;
+  &-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &-dropdown {
+      position: absolute;
+      min-height: 150px;
+      background-color: $white;
+      box-shadow: 1px 1px 8px 1px lighten($color: $black, $amount: 80);
+      right: 16px;
+      z-index: 2;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      gap: $padding-small;
+      padding: $padding-regular;
+      display: none;
+      animation: pfp-slide-in reverse 200ms ease-in-out;
+      &--active {
+        display: flex;
+        animation: pfp-slide-in forwards 200ms ease-in-out;
+      }
+    }
+    &__pfp {
+      width: 32px;
+      border-radius: 50%;
+      border: 2px solid $white;
+    }
+    &__arrow {
+      width: 16px;
+    }
+  }
 }
