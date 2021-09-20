@@ -12,7 +12,7 @@ export const useOnAuthChange = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(Login(user.uid, user.displayName, user.email));
+        dispatch(Login(user.uid, user.displayName, user.email, user.photoURL));
         setLoged(true);
       } else {
         setLoged(false);
