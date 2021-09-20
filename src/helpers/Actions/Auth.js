@@ -5,8 +5,10 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   signOut,
+  signInWithRedirect,
+  getRedirectResult,
 } from "firebase/auth";
-import { GoogleAuthProvider } from "@firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider } from "@firebase/auth";
 
 import { app } from "../Firebase/firebase-config";
 import { authTypes } from "../Types/authTypes";
@@ -15,6 +17,7 @@ const auth = getAuth(app);
 auth.languageCode = "it";
 
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 export const Login = (uid, displayName, mail, photoURL) => {
   return {
@@ -65,6 +68,26 @@ export const SignInWithGoogle = () => {
         // const email = error.email;
         // const credential = GoogleAuthProvider.credentialFromError(error);
         //give feedback to users when login fails
+      });
+  };
+};
+
+export const SignInWithGithub = () => {
+  return async (dispatch) => {
+    await signInWithRedirect(auth, githubProvider);
+    getRedirectResult(auth)
+      .then((result) => {
+        const credential = GithubAuthProvider.credentialFromResult(result);
+        if (credential) {
+          const token = credential.accessToken;
+        }
+        const user = result.user;
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.email;
+        const credential = GithubAuthProvider.credentialFromError(error);
       });
   };
 };
