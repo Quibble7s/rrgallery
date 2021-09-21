@@ -9,7 +9,11 @@ const ImageButton = ({
 }) => {
   return (
     <button className={className} type={type} onClick={onClick}>
-      <img className='btn__image--circular' src={imgSrc} alt={value} />
+      <img
+        className='btn__image--circular --opacity-50'
+        src={imgSrc}
+        alt={value}
+      />
     </button>
   );
 };

@@ -1,6 +1,7 @@
 @use './abstract/index' as *;
 
 .text {
+  display: block;
   color: $black;
   transition: color 200ms ease-in-out;
   &--hover {
@@ -70,6 +71,15 @@
     }
     &-black {
       color: $black;
+    }
+    &-gray {
+      color: $gray;
+    }
+  }
+
+  &--overflow {
+    &-hidded {
+      text-overflow: clip;
     }
   }
 }

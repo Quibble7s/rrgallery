@@ -2,9 +2,11 @@ import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import ReduxThunk from "redux-thunk";
 
 import { AuthReducer } from "./Reducers/AuthReducer";
+import { SearchReducer } from "./Reducers/SearchReducer";
 
 const reducers = combineReducers({
   auth: AuthReducer,
+  search: SearchReducer,
 });
 
 const composeEnhancers =

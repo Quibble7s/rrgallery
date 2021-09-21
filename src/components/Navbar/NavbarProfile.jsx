@@ -8,17 +8,17 @@ import { Logout } from "../../helpers/Actions/Auth";
 import Button from "../Buttons/Button";
 
 const NavbarProfile = ({ uid, photoURL }) => {
-  const dropdownRef = useRef();
-  const profileRef = useRef();
+  const dropdownRef = useRef(null);
+  const profileRef = useRef(null);
   useEffect(() => {
     document.addEventListener("click", (e) => {
       if (
-        e.target.id === profileRef.current.id &&
-        !dropdownRef.current.classList.contains("nav-profile-dropdown--active")
+        e.target.id === profileRef?.current.id &&
+        !dropdownRef?.current.classList.contains("nav-profile-dropdown--active")
       ) {
-        dropdownRef.current.classList.add("nav-profile-dropdown--active");
+        dropdownRef?.current.classList.add("nav-profile-dropdown--active");
       } else {
-        dropdownRef.current.classList.remove("nav-profile-dropdown--active");
+        dropdownRef?.current.classList.remove("nav-profile-dropdown--active");
       }
     });
   }, []);

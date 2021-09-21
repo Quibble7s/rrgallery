@@ -20,7 +20,7 @@ body {
 }
 
 ::placeholder {
-  color: gray;
+  color: $gray;
 }
 
 .container {
@@ -32,6 +32,22 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  &-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.--warp {
+  flex-wrap: wrap;
+}
+
+.--gap {
+  &-1 {
+    gap: 1em;
+  }
 }
 
 .--w {
@@ -52,27 +68,54 @@ body {
   }
 }
 
+.--opacity {
+  &-100 {
+    opacity: 1;
+  }
+  &-75 {
+    opacity: 0.75;
+  }
+  &-50 {
+    opacity: 0.5;
+  }
+  &-25 {
+    opacity: 0.25;
+  }
+}
+
 .--mb {
   &-large {
-    margin-bottom: 2em;
+    margin-top: $margin-large;
   }
   &-regular {
-    margin-bottom: 1em;
+    margin-top: $margin-regular;
   }
   &-small {
-    margin-bottom: 0.5em;
+    margin-top: $margin-small;
   }
 }
 
 .--mt {
   &-large {
-    margin-top: 2em;
+    margin-top: $margin-large;
   }
   &-regular {
-    margin-top: 1em;
+    margin-top: $margin-regular;
   }
   &-small {
-    margin-top: 0.5em;
+    margin-top: $margin-small;
+  }
+}
+
+.--padding {
+  &-large {
+    padding: $padding-large;
+  }
+  &-regular {
+    padding: $padding-regular;
+  }
+  &-small {
+    padding: $padding-small;
   }
 }
 
