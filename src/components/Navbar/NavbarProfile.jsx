@@ -1,30 +1,29 @@
 import React from "react";
 import { useEffect } from "react";
-import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { Logout } from "../../helpers/Actions/Auth";
 
 import Button from "../Buttons/Button";
 
-const NavbarProfile = ({ uid, photoURL }) => {
-  const dropdownRef = useRef(null);
+import defaultPfp from "../../assets/img/defaultpfp.svg";
 
+const NavbarProfile = ({ uid, photoURL }) => {
   useEffect(() => {
     document.addEventListener("click", (e) => {
       if (
         e.target.id === document.querySelector("#profile").id &&
         !document
           .querySelector("#dropdown")
-          .classList.contains("nav-profile-dropdown--active")
+          ?.classList.contains("nav-profile-dropdown--active")
       ) {
         document
           .querySelector("#dropdown")
-          .classList.add("nav-profile-dropdown--active");
+          ?.classList.add("nav-profile-dropdown--active");
       } else {
         document
           .querySelector("#dropdown")
-          .classList.remove("nav-profile-dropdown--active");
+          ?.classList.remove("nav-profile-dropdown--active");
       }
     });
   }, []);
@@ -34,7 +33,7 @@ const NavbarProfile = ({ uid, photoURL }) => {
       <img
         id='profile'
         className='nav-profile__pfp'
-        src={photoURL ? photoURL : "./assets/img/defaultpfp.svg"}
+        src={photoURL ? photoURL : defaultPfp}
         alt='pfp'
       />
       <div id='dropdown' className='nav-profile-dropdown'>
