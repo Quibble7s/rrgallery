@@ -23,6 +23,7 @@ const ImageCard = ({ img = {} }) => {
           <a
             className='text--color-gray text--decoration-underline'
             href={img.user.links.html}
+            rel='noreferrer'
             target='_blank'>
             {img.user.username}
           </a>
