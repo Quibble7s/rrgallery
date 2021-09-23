@@ -9,20 +9,22 @@ import Button from "../Buttons/Button";
 
 const NavbarProfile = ({ uid, photoURL }) => {
   const dropdownRef = useRef(null);
-  const profileRef = useRef(null);
 
   useEffect(() => {
     document.addEventListener("click", (e) => {
       if (
-        e.target.id === profileRef?.current.id &&
-        !dropdownRef?.current.classList.contains(
-          "nav-profile-dropdown--active",
-        ) &&
-        profileRef
+        e.target.id === document.querySelector("#profile").id &&
+        !document
+          .querySelector("#dropdown")
+          .classList.contains("nav-profile-dropdown--active")
       ) {
-        dropdownRef?.current.classList.add("nav-profile-dropdown--active");
+        document
+          .querySelector("#dropdown")
+          .classList.add("nav-profile-dropdown--active");
       } else {
-        dropdownRef?.current.classList.remove("nav-profile-dropdown--active");
+        document
+          .querySelector("#dropdown")
+          .classList.remove("nav-profile-dropdown--active");
       }
     });
   }, []);
@@ -30,13 +32,12 @@ const NavbarProfile = ({ uid, photoURL }) => {
   return (
     <div className='nav-profile'>
       <img
-        ref={profileRef}
         id='profile'
         className='nav-profile__pfp'
         src={photoURL ? photoURL : "./assets/img/defaultpfp.svg"}
         alt='pfp'
       />
-      <div ref={dropdownRef} className='nav-profile-dropdown'>
+      <div id='dropdown' className='nav-profile-dropdown'>
         <Link
           className='text text--size-regular text--decoration-none'
           to='/user/config'>
