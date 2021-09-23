@@ -24,7 +24,7 @@ const ImageCard = ({ img = {} }) => {
             className='text--color-gray text--decoration-underline'
             href={img.user.links.html}
             target='_blank'>
-            {img.user.first_name.toLowerCase()}
+            {img.user.username}
           </a>
         </p>
       </div>

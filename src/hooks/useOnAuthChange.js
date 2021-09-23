@@ -9,8 +9,8 @@ export const useOnAuthChange = () => {
   const [loged, setLoged] = useState(false);
   const auth = getAuth();
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+  useEffect(async () => {
+    await onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(Login(user.uid, user.displayName, user.email, user.photoURL));
         setLoged(true);

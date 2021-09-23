@@ -9,7 +9,11 @@ import {
   SignInWithGoogle,
 } from "../helpers/Actions/Auth";
 import { useOnElementActive } from "../hooks/useOnElementActive";
+
 import Button from "../components/Buttons/Button";
+
+import gallery from "../assets/img/gallery.svg";
+import background from "../assets/img/background/login-background-top.svg";
 
 import "../sass/pages/login.scss";
 import "../sass/components/Input/input.scss";
@@ -37,11 +41,7 @@ const AuthLogin = () => {
     <div className='container --w-100 --center'>
       <form onSubmit={onLoginHandler} className='login'>
         <div className='logo --mb-large'>
-          <img
-            className='logo__image'
-            src='./assets/img/gallery.svg'
-            alt='logo'
-          />
+          <img className='logo__image' src={gallery} alt='' />
           <h1 className='text text--size-subtitle text--color-primary text--center'>
             rrgallery
           </h1>
@@ -75,7 +75,7 @@ const AuthLogin = () => {
         />
         <Link
           className='text text--size-small text--decoration-none text--center --mt-regular'
-          to='/register'>
+          to='/auth/register'>
           Don't have an account?{" "}
           <span className='text--decoration-underline text--hover-primary'>
             Register
@@ -88,12 +88,7 @@ const AuthLogin = () => {
           onClick={dispatch(SignInWithGoogle)}
         />
       </form>
-
-      <img
-        className='background--top'
-        src='./assets/img/background/login-background-top.svg'
-        alt=''
-      />
+      <img className='background--top' src={background} alt='' />
     </div>
   );
 };

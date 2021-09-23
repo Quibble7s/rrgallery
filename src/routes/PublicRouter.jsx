@@ -1,22 +1,14 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import AuthLogin from "../pages/AuthLogin";
-import AuthRegister from "../pages/AuthRegister";
 
-const PublicRouter = ({ loged }) => {
+const PublicRouter = ({ loged, component: Component, ...routeProps }) => {
   return (
-    <>
-      <Route
-        exact
-        path='/login'
-        component={() => (loged ? <Redirect to='/' /> : <AuthLogin />)}
-      />
-      <Route
-        exact
-        path='/register'
-        component={() => (loged ? <Redirect to='/' /> : <AuthRegister />)}
-      />
-    </>
+    <Route
+      {...routeProps}
+      component={(props) =>
+        !loged ? <Component {...props} /> : <Redirect to='/' />
+      }
+    />
   );
 };
 

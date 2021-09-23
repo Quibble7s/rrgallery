@@ -10,11 +10,15 @@ import Button from "../Buttons/Button";
 const NavbarProfile = ({ uid, photoURL }) => {
   const dropdownRef = useRef(null);
   const profileRef = useRef(null);
+
   useEffect(() => {
     document.addEventListener("click", (e) => {
       if (
         e.target.id === profileRef?.current.id &&
-        !dropdownRef?.current.classList.contains("nav-profile-dropdown--active")
+        !dropdownRef?.current.classList.contains(
+          "nav-profile-dropdown--active",
+        ) &&
+        profileRef
       ) {
         dropdownRef?.current.classList.add("nav-profile-dropdown--active");
       } else {
@@ -22,6 +26,7 @@ const NavbarProfile = ({ uid, photoURL }) => {
       }
     });
   }, []);
+
   return (
     <div className='nav-profile'>
       <img

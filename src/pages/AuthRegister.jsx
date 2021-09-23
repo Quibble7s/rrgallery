@@ -109,7 +109,7 @@ const AuthRegister = () => {
         />
         <Link
           className='text text--size-small text--decoration-none text--center --mt-regular'
-          to='/login'>
+          to='/auth/login'>
           Already have an account?{" "}
           <span className='text--decoration-underline text--hover-primary'>
             Log in

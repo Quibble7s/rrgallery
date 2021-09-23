@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import ImageCard from "../components/Cards/ImageCard";
+
 import { searchPhotos } from "../helpers/Unsplash/getimages";
 
-const SearchImagesPage = () => {
+import ImageCard from "../components/Cards/ImageCard";
+
+const SearchPage = () => {
   const [images, setImages] = useState([]);
+  console.log(images);
   const { search } = useSelector((state) => state);
   useEffect(() => {
     if (search !== {}) {
@@ -26,4 +29,4 @@ const SearchImagesPage = () => {
   );
 };
 
-export default SearchImagesPage;
+export default SearchPage;
