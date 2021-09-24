@@ -11,8 +11,6 @@ import { useCallback } from "react";
 
 const NavbarProfile = ({ uid, photoURL }) => {
   const onClick = useCallback((e) => {
-    console.log(e.target);
-    console.log(document.querySelector("#profile"));
     if (
       e.target.id === document.querySelector("#profile").id &&
       !document
