@@ -28,22 +28,22 @@
     cursor: pointer;
     &-dropdown {
       position: absolute;
-      min-height: 150px;
+      min-width: 135px;
       background-color: $white;
       box-shadow: 1px 1px 8px 1px lighten($color: $black, $amount: 80),
         -1px -1px 8px 1px lighten($color: $black, $amount: 80);
       right: 16px;
       z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-evenly;
       gap: $padding-small;
       padding: $padding-regular;
       display: none;
       animation: pfp-slide-in reverse 200ms ease-in-out;
       &--active {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        gap: 1em;
         animation: pfp-slide-in forwards 200ms ease-in-out;
       }
     }

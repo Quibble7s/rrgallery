@@ -8,14 +8,19 @@ import Button from "../Buttons/Button";
 
 import defaultPfp from "../../assets/img/defaultpfp.svg";
 import { useCallback } from "react";
+import { useSelector } from "react-redux";
 
 const NavbarProfile = ({ uid, photoURL }) => {
+  const { auth } = useSelector((state) => state);
+
   const onClick = useCallback((e) => {
+    const profile = document.querySelector("#profile");
     if (
-      e.target.id === document.querySelector("#profile").id &&
+      e.target.id === profile?.id &&
       !document
         .querySelector("#dropdown")
-        ?.classList.contains("nav-profile-dropdown--active")
+        ?.classList.contains("nav-profile-dropdown--active") &&
+      profile
     ) {
       document
         .querySelector("#dropdown")
@@ -43,21 +48,40 @@ const NavbarProfile = ({ uid, photoURL }) => {
         alt='pfp'
       />
       <div id='dropdown' className='nav-profile-dropdown'>
-        <Link
-          className='text text--size-regular text--decoration-none'
-          to='/user/config'>
-          Configuration
-        </Link>
-        <Link
-          className='text text--size-regular text--decoration-none'
-          to={`/user/profile/${encodeURI(uid)}`}>
-          Profile
-        </Link>
-        <Button
-          className='btn btn--radius-16 btn--primary text--size-regular'
-          value='Logout'
-          onClick={Logout}
-        />
+        {auth.loged ? (
+          <>
+            <Link
+              className='text text--size-regular text--decoration-none text--hover-primary'
+              to='/user/configuration'>
+              Configuration
+            </Link>
+            <Link
+              className='text text--size-regular text--decoration-none text--hover-primary'
+              to={`/user/profile/${encodeURI(uid)}`}>
+              Profile
+            </Link>
+            <Button
+              className='btn btn--radius-16 btn--primary text--size-regular --w-100'
+              value='Logout'
+              onClick={Logout}
+            />
+          </>
+        ) : (
+          <>
+            <Link to='/auth/login' className='--w-100'>
+              <Button
+                className='btn btn--radius-16 btn--primary text--size-regular --w-100'
+                value='Login'
+              />
+            </Link>
+            <Link to='/auth/register' className='--w-100'>
+              <Button
+                className='btn btn--radius-16 btn--primary text--size-regular --w-100'
+                value='Register'
+              />
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

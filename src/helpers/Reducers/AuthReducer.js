@@ -5,7 +5,7 @@ export const AuthReducer = (state = {}, action) => {
     case authTypes.login:
       return action.payload;
     case authTypes.logout:
-      return {};
+      return action.payload;
     default:
       return state;
   }

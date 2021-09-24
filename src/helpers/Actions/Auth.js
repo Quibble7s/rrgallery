@@ -27,15 +27,19 @@ export const Login = (uid, displayName, mail, photoURL) => {
       displayName: displayName,
       email: mail,
       photoURL: photoURL,
+      loged: true,
     },
   };
 };
 
-export const Logout = async () => {
-  await signOut(auth);
+export const Logout = () => {
+  signOut(auth);
   return (dispatch) => {
     dispatch({
       type: authTypes.logout,
+      payload: {
+        loged: false,
+      },
     });
   };
 };

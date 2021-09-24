@@ -1,20 +1,21 @@
 import React from "react";
 import { Switch } from "react-router-dom";
-import AppRouter from "./AppRouter";
 import { BrowserRouter as Router } from "react-router-dom";
 import PrivateRouter from "./PrivateRouter";
 import PublicRouter from "./PublicRouter";
-import AuthRouter from "./AuthRouter";
 import { useOnAuthChange } from "../hooks/useOnAuthChange";
+import UserRouter from "./UserRouter";
+import HomeRouter from "./HomeRouter";
 
+import "../sass/components/container/container.scss";
 const MainRouter = () => {
   const loged = useOnAuthChange();
   return (
     <>
       <Router>
         <Switch>
-          <PublicRouter loged={loged} path='/auth' component={AuthRouter} />
-          <PrivateRouter loged={loged} path='/' component={AppRouter} />
+          <PrivateRouter loged={loged} path='/user' component={UserRouter} />
+          <PublicRouter path='/' component={HomeRouter} />
         </Switch>
       </Router>
     </>
