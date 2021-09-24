@@ -7,6 +7,8 @@ import { Register } from "../helpers/Actions/Auth";
 import { useOnChange } from "../hooks/useOnChange";
 import { useOnElementActive } from "../hooks/useOnElementActive";
 
+import backgroundTop from "../assets/img/background/login-background-top.svg";
+
 import "../sass/components/Input/input.scss";
 import "../sass/pages/register.scss";
 
@@ -45,7 +47,7 @@ const AuthRegister = () => {
           name='username'
           id='username'
           type='text'
-          placeholder='Username*'
+          placeholder='username*'
           required
           value={data.username}
           autoComplete='off'
@@ -71,7 +73,7 @@ const AuthRegister = () => {
           name='confirmemail'
           id='confirmemail'
           type='email'
-          placeholder='Confirm email*'
+          placeholder='confirm email*'
           required
           value={data.confirmemail}
           autoComplete='off'
@@ -84,7 +86,7 @@ const AuthRegister = () => {
           name='password'
           id='password'
           type='password'
-          placeholder='Password*'
+          placeholder='password*'
           required
           value={data.password}
           autoComplete='off'
@@ -97,7 +99,7 @@ const AuthRegister = () => {
           name='confirmpassword'
           id='confirmpassword'
           type='password'
-          placeholder='Confirm password*'
+          placeholder='confirm password*'
           required
           value={data.confirmpassword}
           autoComplete='off'
@@ -117,11 +119,7 @@ const AuthRegister = () => {
           ...
         </Link>
       </form>
-      <img
-        className='background--top'
-        src='./assets/img/background/login-background-top.svg'
-        alt=''
-      />
+      <img className='background--top' src={backgroundTop} alt='' />
     </div>
   );
 };

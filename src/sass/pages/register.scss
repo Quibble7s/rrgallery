@@ -20,7 +20,8 @@
   padding: $padding-regular;
   min-height: 65vh;
   border-radius: 16px;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1),
+    -1px -1px 5px 1px rgba(0, 0, 0, 0.1);
   position: relative;
   animation: slide-in forwards 200ms ease-in-out;
 }
@@ -28,6 +29,7 @@
 @media (min-width: 900px) {
   .register {
     min-width: 450px;
+    max-width: 470px;
     width: 30%;
     min-height: 75vh;
     margin: $margin-regular;
