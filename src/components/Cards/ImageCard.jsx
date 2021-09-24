@@ -18,8 +18,10 @@ const ImageCard = ({ img = {} }) => {
             alt=''
           />
         </a>
-        <p className='text text--color-gray text--center --mt-small'>
-          Photo by{" @"}
+        <p className='text text--color-gray text--center --mt-small --w-100 text--overflow-ellipsis'>
+          Photo by
+          <br />
+          {" @"}
           <a
             className='text--color-gray text--decoration-underline'
             href={img.user.links.html}

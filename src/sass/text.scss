@@ -79,7 +79,12 @@
 
   &--overflow {
     &-hidded {
+      overflow: hidden;
       text-overflow: clip;
+    }
+    &-ellipsis {
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
