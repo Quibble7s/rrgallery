@@ -29,9 +29,9 @@
   &--primary {
     color: $white;
     background-color: $whine-extra-light;
-    @include background-color-out($whine-light, $whine-extra-light, 200ms);
+    @include background-color-out($whine-extra-light, 200ms);
     &:hover {
-      @include background-color-in($whine-extra-light, $whine-light, 200ms);
+      @include background-color-in($whine-extra-light, 200ms);
     }
   }
 }

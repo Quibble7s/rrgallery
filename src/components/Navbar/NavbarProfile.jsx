@@ -54,7 +54,7 @@ const NavbarProfile = ({ uid, photoURL }) => {
           Profile
         </Link>
         <Button
-          className='btn btn--radius-8 btn--primary text--size-regular'
+          className='btn btn--radius-16 btn--primary text--size-regular'
           value='Logout'
           onClick={Logout}
         />

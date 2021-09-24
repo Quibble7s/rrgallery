@@ -69,7 +69,7 @@ const AuthLogin = () => {
           onChange={onChangeHandler}
         />
         <Button
-          className='btn text--size-small btn--primary --mt-regular --w-50 btn--radius-8'
+          className='btn text--size-small btn--primary --mt-regular --w-50 btn--radius-16'
           value='Log in'
           type='submit'
         />
