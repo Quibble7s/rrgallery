@@ -7,9 +7,12 @@ import { Logout } from "../../helpers/Actions/Auth";
 import Button from "../Buttons/Button";
 
 import defaultPfp from "../../assets/img/defaultpfp.svg";
+import { useCallback } from "react";
 
 const NavbarProfile = ({ uid, photoURL }) => {
-  const onClickHandler = (e) => {
+  const onClick = useCallback((e) => {
+    console.log(e.target);
+    console.log(document.querySelector("#profile"));
     if (
       e.target.id === document.querySelector("#profile").id &&
       !document
@@ -24,12 +27,18 @@ const NavbarProfile = ({ uid, photoURL }) => {
         .querySelector("#dropdown")
         ?.classList.remove("nav-profile-dropdown--active");
     }
-  };
+  });
+
+  useEffect(() => {
+    document.addEventListener("click", onClick);
+    return () => {
+      document.removeEventListener("click", onClick);
+    };
+  }, []);
 
   return (
     <div className='nav-profile'>
       <img
-        onClick={onClickHandler}
         id='profile'
         className='nav-profile__pfp'
         src={photoURL ? photoURL : defaultPfp}
