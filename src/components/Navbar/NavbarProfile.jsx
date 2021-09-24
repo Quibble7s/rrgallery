@@ -9,28 +9,27 @@ import Button from "../Buttons/Button";
 import defaultPfp from "../../assets/img/defaultpfp.svg";
 
 const NavbarProfile = ({ uid, photoURL }) => {
-  useEffect(() => {
-    document.addEventListener("click", (e) => {
-      if (
-        e.target.id === document.querySelector("#profile").id &&
-        !document
-          .querySelector("#dropdown")
-          ?.classList.contains("nav-profile-dropdown--active")
-      ) {
-        document
-          .querySelector("#dropdown")
-          ?.classList.add("nav-profile-dropdown--active");
-      } else {
-        document
-          .querySelector("#dropdown")
-          ?.classList.remove("nav-profile-dropdown--active");
-      }
-    });
-  }, []);
+  const onClickHandler = (e) => {
+    if (
+      e.target.id === document.querySelector("#profile").id &&
+      !document
+        .querySelector("#dropdown")
+        ?.classList.contains("nav-profile-dropdown--active")
+    ) {
+      document
+        .querySelector("#dropdown")
+        ?.classList.add("nav-profile-dropdown--active");
+    } else {
+      document
+        .querySelector("#dropdown")
+        ?.classList.remove("nav-profile-dropdown--active");
+    }
+  };
 
   return (
     <div className='nav-profile'>
       <img
+        onClick={onClickHandler}
         id='profile'
         className='nav-profile__pfp'
         src={photoURL ? photoURL : defaultPfp}

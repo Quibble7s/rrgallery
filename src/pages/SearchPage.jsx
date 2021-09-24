@@ -7,7 +7,6 @@ import ImageCard from "../components/Cards/ImageCard";
 
 const SearchPage = () => {
   const [images, setImages] = useState([]);
-  console.log(images);
   const { search } = useSelector((state) => state);
   useEffect(() => {
     if (search !== {}) {
