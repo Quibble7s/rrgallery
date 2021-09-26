@@ -8,13 +8,19 @@ import UserRouter from "./UserRouter";
 import HomeRouter from "./HomeRouter";
 
 import "../sass/components/container/container.scss";
+import { useSelector } from "react-redux";
 const MainRouter = () => {
-  const loged = useOnAuthChange();
+  useOnAuthChange();
+  const { auth } = useSelector((state) => state);
   return (
     <>
       <Router>
         <Switch>
-          <PrivateRouter loged={loged} path='/user' component={UserRouter} />
+          <PrivateRouter
+            loged={auth.loged}
+            path='/user'
+            component={UserRouter}
+          />
           <PublicRouter path='/' component={HomeRouter} />
         </Switch>
       </Router>

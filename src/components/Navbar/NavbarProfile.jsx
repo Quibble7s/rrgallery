@@ -61,7 +61,7 @@ const NavbarProfile = ({ uid, photoURL }) => {
               Profile
             </Link>
             <Button
-              className='btn btn--radius-16 btn--primary text--size-regular --w-100'
+              className='btn btn--radius-4 btn--primary text--size-regular --w-100'
               value='Logout'
               onClick={Logout}
             />
@@ -70,13 +70,13 @@ const NavbarProfile = ({ uid, photoURL }) => {
           <>
             <Link to='/auth/login' className='--w-100'>
               <Button
-                className='btn btn--radius-16 btn--primary text--size-regular --w-100'
+                className='btn btn--radius-4 btn--primary text--size-regular --w-100'
                 value='Login'
               />
             </Link>
             <Link to='/auth/register' className='--w-100'>
               <Button
-                className='btn btn--radius-16 btn--primary text--size-regular --w-100'
+                className='btn btn--radius-4 btn--primary text--size-regular --w-100'
                 value='Register'
               />
             </Link>

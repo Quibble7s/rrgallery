@@ -6,6 +6,9 @@
   padding: $padding-small;
   cursor: pointer;
   &--radius {
+    &-4 {
+      border-radius: 4px;
+    }
     &-8 {
       border-radius: 8px;
     }
@@ -28,10 +31,10 @@
   }
   &--primary {
     color: $white;
-    background-color: $whine-extra-light;
-    @include background-color-out($whine-extra-light, 200ms);
+    background-color: $primary;
+    @include background-color-out($primary, 200ms);
     &:hover {
-      @include background-color-in($whine-extra-light, 200ms);
+      @include background-color-in($primary, 200ms);
     }
   }
 }

@@ -15,11 +15,12 @@
   width: 100%;
   padding: $padding-regular;
   height: auto;
-  background-color: $whine-extra-light;
+  background-color: $primary;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: $margin-regular;
+  box-shadow: 1px 1px 3px 1px $gray-extra-light;
   &-profile {
     display: flex;
     flex-direction: row;
@@ -30,8 +31,8 @@
       position: absolute;
       min-width: 135px;
       background-color: $white;
-      box-shadow: 1px 1px 8px 1px lighten($color: $black, $amount: 80),
-        -1px -1px 8px 1px lighten($color: $black, $amount: 80);
+      box-shadow: 1px 1px 3px 1px $gray-extra-light,
+        -1px -1px 3px 1px $gray-extra-light;
       right: 16px;
       z-index: 2;
       gap: $padding-small;
@@ -49,8 +50,13 @@
     }
     &__pfp {
       width: 32px;
+      height: 32px;
       border-radius: 50%;
-      border: 2px solid $white;
+      border: 1px solid $primary;
+      transition: border 200ms ease-in-out;
+      &:hover {
+        border: 1px solid $primary-light;
+      }
     }
     &__arrow {
       width: 16px;

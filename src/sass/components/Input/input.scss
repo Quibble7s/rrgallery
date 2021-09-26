@@ -5,13 +5,13 @@
     border-bottom: 1px solid $black;
   }
   100% {
-    border-bottom: 1px solid $whine-extra-light;
+    border-bottom: 1px solid $primary;
   }
 }
 
 @keyframes input-field-inactive {
   0% {
-    border-bottom: 1px solid $whine-extra-light;
+    border-bottom: 1px solid $primary;
   }
   100% {
     border-bottom: 1px solid $black;
@@ -26,21 +26,31 @@
   color: $black;
   width: 100%;
   &-field {
+    padding: $padding-extra-small;
     &-white {
       border-bottom: 1px solid rgba($color: $white, $alpha: 0.5);
-      padding: $padding-extra-small;
+    }
+    &-black {
+      border-bottom: 1px solid rgba($color: $black, $alpha: 0.5);
     }
     animation: input-field-inactive forwards 200ms linear;
-    padding: $padding-small;
     &--color {
       &-white {
-        color: white;
+        color: $white;
+      }
+      &-black {
+        color: $black;
       }
     }
     &--placeholder {
       &-white {
         &::placeholder {
           color: $white;
+        }
+      }
+      &-black {
+        &::placeholder {
+          color: $black;
         }
       }
     }
@@ -53,7 +63,7 @@
 .search-form {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   flex: 1 1 auto;
   padding: $padding-extra-small;
   border-radius: 8px;

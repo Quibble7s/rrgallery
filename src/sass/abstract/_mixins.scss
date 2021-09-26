@@ -19,11 +19,9 @@
   @keyframes bg-in {
     0% {
       background-color: $color;
-      box-shadow: 1px 1px 1px 1px lighten($color: $black, $amount: 100);
     }
     100% {
       background-color: lighten($color: $color, $amount: 10);
-      box-shadow: 1px 4px 8px 1px lighten($color: $black, $amount: 60);
     }
   }
   animation: bg-in forwards $duration linear;
@@ -33,11 +31,9 @@
   @keyframes bg-out {
     0% {
       background-color: lighten($color: $color, $amount: 10);
-      box-shadow: 1px 4px 8px 1px lighten($color: $black, $amount: 60);
     }
     100% {
       background-color: $color;
-      box-shadow: 1px 1px 1px 1px lighten($color: $black, $amount: 100);
     }
   }
   animation: bg-out forwards $duration linear;

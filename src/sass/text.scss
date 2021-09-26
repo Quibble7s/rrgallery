@@ -7,7 +7,7 @@
   &--hover {
     &-primary:hover {
       transition: color 200ms ease-in-out;
-      color: lighten($color: $whine-extra-light, $amount: 10);
+      color: lighten($color: $primary, $amount: 10);
     }
   }
   &--center {
@@ -58,12 +58,12 @@
   }
   &--color {
     &-primary {
-      color: $whine-extra-light;
-      &-dark {
-        color: $whine-light;
+      color: $primary;
+      &-light {
+        color: $primary-light;
       }
-      &-extra-dark {
-        color: $whine;
+      &-extra-light {
+        color: lighten($color: $primary-light, $amount: 10);
       }
     }
     &-white {

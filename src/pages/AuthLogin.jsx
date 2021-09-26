@@ -41,10 +41,11 @@ const AuthLogin = () => {
     <div className='container --w-100 --center'>
       <form onSubmit={onLoginHandler} className='login'>
         <div className='logo --mb-large'>
-          <img className='logo__image' src={gallery} alt='' />
-          <h1 className='text text--size-subtitle text--color-primary text--center'>
-            rrgallery
-          </h1>
+          <Link to='/' className='text--decoration-none'>
+            <h1 className='text text--size-subtitle text--color-primary text--center'>
+              rrgallery
+            </h1>
+          </Link>
         </div>
         <input
           onFocus={onFocus}
@@ -69,7 +70,7 @@ const AuthLogin = () => {
           onChange={onChangeHandler}
         />
         <Button
-          className='btn text--size-small btn--primary --mt-regular --w-50 btn--radius-16'
+          className='btn text--size-small btn--primary --mt-large --w-50 btn--radius-4'
           value='Log in'
           type='submit'
         />

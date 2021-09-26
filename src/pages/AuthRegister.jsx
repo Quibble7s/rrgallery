@@ -105,7 +105,7 @@ const AuthRegister = () => {
           autoComplete='off'
         />
         <Button
-          className='btn text--size-small btn--primary --mt-regular --w-50 btn--radius-16'
+          className='btn text--size-small btn--primary --mt-large --w-50 btn--radius-4'
           value='Register'
           type='submit'
         />

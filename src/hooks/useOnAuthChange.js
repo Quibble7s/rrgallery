@@ -6,25 +6,20 @@ import { useDispatch } from "react-redux";
 
 export const useOnAuthChange = () => {
   const dispatch = useDispatch();
-  const [loged, setLoged] = useState(false);
   const auth = getAuth();
 
   useEffect(() => {
     async function onAuth() {
-      await onAuthStateChanged(auth, (user) => {
+      await onAuthStateChanged(auth, async (user) => {
         if (user) {
-          dispatch(
+          await dispatch(
             Login(user.uid, user.displayName, user.email, user.photoURL),
           );
-          setLoged(true);
         } else {
-          dispatch(Logout());
-          setLoged(false);
+          await dispatch(Logout());
         }
       });
     }
     onAuth();
   }, [auth, dispatch]);
-
-  return loged;
 };

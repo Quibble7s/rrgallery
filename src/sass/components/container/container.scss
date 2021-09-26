@@ -119,6 +119,12 @@ body {
   }
 }
 
+.--pdb {
+  &-none {
+    padding-bottom: 0;
+  }
+}
+
 .background {
   &--bottom {
     @include background-bottom();

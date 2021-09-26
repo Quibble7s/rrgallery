@@ -1,25 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-
-import { searchPhotos } from "../helpers/Unsplash/getimages";
 
 import ImageCard from "../components/Cards/ImageCard";
 
 const SearchPage = () => {
-  const [images, setImages] = useState([]);
-  const { search } = useSelector((state) => state);
-  useEffect(() => {
-    if (search !== {}) {
-      searchPhotos(search.perPage, search.page, search.keywords).then((val) => {
-        setImages(val.results);
-      });
-    }
-  }, [search.keywords, search.page]);
+  const { images } = useSelector((state) => state);
   return (
     <>
       <div className='container --w-100 --center'>
-        <div className='container --w-75 --gap-1 --mt-large --mb-large --center-row --padding-regular --warp'>
-          {images.map((img) => (
+        <div className='container --w-75 --gap-1 --center-row --padding-regular --warp --mt-large'>
+          {images.data?.map((img) => (
             <ImageCard key={img.id} img={img} />
           ))}
         </div>
