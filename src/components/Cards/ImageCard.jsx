@@ -3,10 +3,28 @@ import React from "react";
 import zoomImage from "../../assets/img/zoom.svg";
 import downloadImage from "../../assets/img/download.svg";
 import bookmarkImage from "../../assets/img/bookmark.svg";
+import likeImage from "../../assets/img/heart.svg";
 
 import "../../sass/components/Cards/card.scss";
 
 const ImageCard = ({ img = {} }) => {
+  const onDownloadHandler = async (e) => {
+    const downloadLink = `${img.links.download_location}&client_id=lirba6ghVGu1uzhSgzE5RVKs80hfdQcRBJTJFvx34d8`;
+    const res = await fetch(downloadLink)
+      .then(() => {
+        const a = document.createElement("a");
+        a.href = `${img.links.download}?force=true`;
+        a.download = `${img.id}.jpg`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    return res.json();
+  };
+
   return (
     <div className='card'>
       <div className='card-img-wrapper'>
@@ -28,12 +46,18 @@ const ImageCard = ({ img = {} }) => {
       <div className='card-user'>
         <div className='card-user-actions'>
           <img
-            className='card-user-actions__download'
-            src={downloadImage}
-            alt='download'
+            className='card-user-actions__action'
+            src={likeImage}
+            alt='like'
           />
           <img
-            className='card-user-actions__bookmark'
+            className='card-user-actions__action'
+            src={downloadImage}
+            alt='download'
+            onClick={onDownloadHandler}
+          />
+          <img
+            className='card-user-actions__action'
             src={bookmarkImage}
             alt='download'
           />
@@ -46,11 +70,11 @@ const ImageCard = ({ img = {} }) => {
             crossOrigin='anonymous'
           />
         </a>
-        <p className='text text--color-gray text--center --mt-small --w-100 text--overflow-ellipsis'>
+        <p className='text text--color-light-gray text--center --mt-small --w-100 text--overflow-ellipsis'>
           Photo by
           <br />
           <a
-            className='text--color-black text--decoration-underline text--hover-primary'
+            className='text--color-light-gray text--decoration-underline text--hover-primary'
             href={img.user.links.html}
             rel='noreferrer'
             target='_blank'>

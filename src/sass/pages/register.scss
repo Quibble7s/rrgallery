@@ -17,11 +17,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   padding: $padding-regular;
   min-height: 65vh;
-  border-radius: 16px;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1),
-    -1px -1px 5px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  @include shadow();
+  border: 1px solid lighten($color: $gray-extra-light, $amount: 3.5);
   position: relative;
   animation: slide-in forwards 200ms ease-in-out;
 }

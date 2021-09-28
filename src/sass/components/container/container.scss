@@ -125,6 +125,12 @@ body {
   }
 }
 
+.--float {
+  &-left {
+    float: left;
+  }
+}
+
 .background {
   &--bottom {
     @include background-bottom();

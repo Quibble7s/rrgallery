@@ -4,9 +4,15 @@ import { Link } from "react-router-dom";
 
 import { Logout } from "../../helpers/Actions/Auth";
 
-import Button from "../Buttons/Button";
-
 import defaultPfp from "../../assets/img/defaultpfp.svg";
+import logoutImg from "../../assets/img/logout.svg";
+import loginImg from "../../assets/img/login.svg";
+import registerImg from "../../assets/img/register.svg";
+import profileImg from "../../assets/img/defaultpfp.svg";
+import configImg from "../../assets/img/config.svg";
+import likedImg from "../../assets/img/heart.svg";
+import favoriteImg from "../../assets/img/bookmark.svg";
+
 import { useCallback } from "react";
 import { useSelector } from "react-redux";
 
@@ -50,36 +56,93 @@ const NavbarProfile = ({ uid, photoURL }) => {
       <div id='dropdown' className='nav-profile-dropdown'>
         {auth.loged ? (
           <>
-            <Link
-              className='text text--size-regular text--decoration-none text--hover-primary'
-              to='/user/configuration'>
-              Configuration
-            </Link>
-            <Link
-              className='text text--size-regular text--decoration-none text--hover-primary'
-              to={`/user/profile/${encodeURI(uid)}`}>
-              Profile
-            </Link>
-            <Button
-              className='btn btn--radius-4 btn--primary text--size-regular --w-100'
-              value='Logout'
-              onClick={Logout}
-            />
+            <div>
+              <img
+                className='nav-profile-dropdown__menu-img --float-left'
+                src={profileImg}
+                alt=''
+              />
+              <Link
+                className='text text--size-regular text--decoration-none text--hover-primary --float-left'
+                to={`/user/${encodeURI(uid)}/profile`}>
+                Profile
+              </Link>
+            </div>
+            <div>
+              <img
+                className='nav-profile-dropdown__menu-img --float-left'
+                src={likedImg}
+                alt=''
+              />
+              <Link
+                className='text text--size-regular text--decoration-none text--hover-primary --float-left'
+                to={`/user/${encodeURI(uid)}/liked`}>
+                Liked
+              </Link>
+            </div>
+            <div>
+              <img
+                className='nav-profile-dropdown__menu-img --float-left'
+                src={favoriteImg}
+                alt=''
+              />
+              <Link
+                className='text text--size-regular text--decoration-none text--hover-primary --float-left'
+                to={`/user/${encodeURI(uid)}/favorites`}>
+                Favorites
+              </Link>
+            </div>
+            <div>
+              <img
+                className='nav-profile-dropdown__menu-img --float-left'
+                src={configImg}
+                alt=''
+              />
+              <Link
+                className='text text--size-regular text--decoration-none text--hover-primary --float-left'
+                to='/user/configuration'>
+                Configuration
+              </Link>
+            </div>
+            <div>
+              <img
+                className='nav-profile-dropdown__menu-img --float-left'
+                src={logoutImg}
+                alt=''
+              />
+              <p
+                className='text text--size-regular text--decoration-none text--hover-primary --float-left'
+                onClick={Logout}>
+                Logout
+              </p>
+            </div>
           </>
         ) : (
           <>
-            <Link to='/auth/login' className='--w-100'>
-              <Button
-                className='btn btn--radius-4 btn--primary text--size-regular --w-100'
-                value='Login'
+            <div>
+              <img
+                className='nav-profile-dropdown__menu-img --float-left'
+                src={loginImg}
+                alt=''
               />
-            </Link>
-            <Link to='/auth/register' className='--w-100'>
-              <Button
-                className='btn btn--radius-4 btn--primary text--size-regular --w-100'
-                value='Register'
+              <Link
+                className='text text--size-regular text--decoration-none text--hover-primary --float-left'
+                to={`/auth/login`}>
+                Login
+              </Link>
+            </div>
+            <div>
+              <img
+                className='nav-profile-dropdown__menu-img --float-left'
+                src={registerImg}
+                alt=''
               />
-            </Link>
+              <Link
+                className='text text--size-regular text--decoration-none text--hover-primary --float-left'
+                to={`/auth/register`}>
+                Register
+              </Link>
+            </div>
           </>
         )}
       </div>

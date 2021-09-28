@@ -24,7 +24,7 @@
   background-color: transparent;
   resize: none;
   color: $black;
-  width: 100%;
+  width: 80%;
   &-field {
     padding: $padding-extra-small;
     &-white {
@@ -32,6 +32,12 @@
     }
     &-black {
       border-bottom: 1px solid rgba($color: $black, $alpha: 0.5);
+    }
+    &-gray {
+      border-bottom: 1px solid rgba($color: $gray, $alpha: 0.5);
+    }
+    &-light-gray {
+      border-bottom: 1px solid rgba($color: $gray-light, $alpha: 0.5);
     }
     animation: input-field-inactive forwards 200ms linear;
     &--color {
@@ -41,8 +47,19 @@
       &-black {
         color: $black;
       }
+      &-gray {
+        color: $gray;
+      }
+      &-light-gray {
+        color: $gray-light;
+      }
     }
     &--placeholder {
+      &--center {
+        &::placeholder {
+          text-align: center;
+        }
+      }
       &-white {
         &::placeholder {
           color: $white;
@@ -51,6 +68,16 @@
       &-black {
         &::placeholder {
           color: $black;
+        }
+      }
+      &-gray {
+        &::placeholder {
+          color: $gray;
+        }
+      }
+      &-light-gray {
+        &::placeholder {
+          color: $gray-light;
         }
       }
     }
@@ -63,8 +90,9 @@
 .search-form {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: flex-end;
-  flex: 1 1 auto;
+  width: 100%;
   padding: $padding-extra-small;
   border-radius: 8px;
 }

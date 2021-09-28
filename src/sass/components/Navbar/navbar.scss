@@ -15,12 +15,12 @@
   width: 100%;
   padding: $padding-regular;
   height: auto;
-  background-color: $primary;
+  background-color: $white;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: $margin-regular;
-  box-shadow: 1px 1px 3px 1px $gray-extra-light;
+  @include shadow();
   &-profile {
     display: flex;
     flex-direction: row;
@@ -30,19 +30,23 @@
     &-dropdown {
       position: absolute;
       min-width: 135px;
-      background-color: $white;
-      box-shadow: 1px 1px 3px 1px $gray-extra-light,
-        -1px -1px 3px 1px $gray-extra-light;
+      background-color: lighten($color: $gray-extra-light, $amount: 3.5);
+      border-radius: 4px;
       right: 16px;
       z-index: 2;
       gap: $padding-small;
       padding: $padding-regular;
       display: none;
       animation: pfp-slide-in reverse 200ms ease-in-out;
+      &__menu-img {
+        width: 16px;
+        height: 16px;
+        margin-right: $margin-small;
+      }
       &--active {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-around;
         gap: 1em;
         animation: pfp-slide-in forwards 200ms ease-in-out;
@@ -52,10 +56,10 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      border: 1px solid $primary;
+      border: 1px solid $gray-extra-light;
       transition: border 200ms ease-in-out;
       &:hover {
-        border: 1px solid $primary-light;
+        border: 2px solid $primary;
       }
     }
     &__arrow {

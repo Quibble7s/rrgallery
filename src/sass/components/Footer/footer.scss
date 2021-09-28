@@ -1,0 +1,7 @@
+@use '../../abstract/index' as *;
+
+.footer {
+  background-color: $black;
+  padding: $padding-regular;
+  text-align: center;
+}

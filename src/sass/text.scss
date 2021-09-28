@@ -56,6 +56,11 @@
       font-weight: $font-weight-light;
     }
   }
+
+  &--clickable {
+    cursor: pointer;
+  }
+
   &--color {
     &-primary {
       color: $primary;
@@ -74,6 +79,9 @@
     }
     &-gray {
       color: $gray;
+    }
+    &-light-gray {
+      color: $gray-light;
     }
   }
 

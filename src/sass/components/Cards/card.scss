@@ -15,8 +15,9 @@
 .card {
   width: 100%;
   padding: $padding-regular;
-  box-shadow: 1px 1px 3px 1px $gray-extra-light,
-    -1px -1px 3px 1px $gray-extra-light;
+  @include shadow();
+  border-radius: 4px;
+  border: 1px solid lighten($color: $gray-extra-light, $amount: 3.5);
   &-img-wrapper {
     display: flex;
     position: relative;
@@ -59,19 +60,12 @@
       align-items: center;
       gap: 1rem;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      &__download,
-      &__bookmark {
+      &__action {
+        width: 16px;
+        opacity: 0.5;
         &:hover {
           cursor: pointer;
         }
-      }
-      &__download {
-        width: 16px;
-        opacity: 0.5;
-      }
-      &__bookmark {
-        width: 16px;
-        opacity: 0.5;
       }
     }
     &__img {

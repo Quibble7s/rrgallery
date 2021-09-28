@@ -36,18 +36,18 @@ const AuthRegister = () => {
   return (
     <div className='container --w-100 --center'>
       <form onSubmit={onRegisterHandler} className='register'>
-        <h1 className='text text--size-subtitle text--color-primary text--center --mb-regular'>
+        <h1 className='text text--size-subtitle text--color-light-gray text--center --mb-regular'>
           Register
         </h1>
         <input
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field'
+          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
           name='username'
           id='username'
           type='text'
-          placeholder='username*'
+          placeholder='username'
           required
           value={data.username}
           autoComplete='off'
@@ -56,11 +56,11 @@ const AuthRegister = () => {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field --mt-regular'
+          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
           name='email'
           id='email'
           type='email'
-          placeholder='email*'
+          placeholder='email'
           required
           value={data.email}
           autoComplete='off'
@@ -69,11 +69,11 @@ const AuthRegister = () => {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field --mt-regular'
+          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
           name='confirmemail'
           id='confirmemail'
           type='email'
-          placeholder='confirm email*'
+          placeholder='confirm email'
           required
           value={data.confirmemail}
           autoComplete='off'
@@ -82,11 +82,11 @@ const AuthRegister = () => {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field --mt-regular'
+          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
           name='password'
           id='password'
           type='password'
-          placeholder='password*'
+          placeholder='password'
           required
           value={data.password}
           autoComplete='off'
@@ -95,22 +95,22 @@ const AuthRegister = () => {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field --mt-regular'
+          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
           name='confirmpassword'
           id='confirmpassword'
           type='password'
-          placeholder='confirm password*'
+          placeholder='confirm password'
           required
           value={data.confirmpassword}
           autoComplete='off'
         />
         <Button
-          className='btn text--size-small btn--primary --mt-large --w-50 btn--radius-4'
+          className='btn text--size-small btn--light-gray --mt-large --w-50 btn--radius-4'
           value='Register'
           type='submit'
         />
         <Link
-          className='text text--size-small text--decoration-none text--center --mt-regular'
+          className='text text--size-small text--decoration-none text--center --mt-small'
           to='/auth/login'>
           Already have an account?{" "}
           <span className='text--decoration-underline text--hover-primary'>
@@ -119,7 +119,6 @@ const AuthRegister = () => {
           ...
         </Link>
       </form>
-      <img className='background--top' src={backgroundTop} alt='' />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
+import Footer from "../components/Footer/Footer";
 
 import Navbar from "../components/Navbar/Navbar";
 import HomePage from "../pages/HomePage";
@@ -16,6 +17,7 @@ const HomeRouter = ({ history }) => {
         <Route path='/auth' component={AuthRouter} />
         <Redirect to='/' />
       </Switch>
+      {!history.location.pathname.includes("/auth") && <Footer />}
     </>
   );
 };

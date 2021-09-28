@@ -32,9 +32,33 @@
   &--primary {
     color: $white;
     background-color: $primary;
-    @include background-color-out($primary, 200ms);
+    transition: background-color 200ms ease-in-out;
     &:hover {
-      @include background-color-in($primary, 200ms);
+      background-color: lighten($color: $primary, $amount: 10);
+    }
+  }
+  &--black {
+    color: $white;
+    background-color: $black;
+    transition: background-color 200ms ease-in-out;
+    &:hover {
+      background-color: lighten($color: $black, $amount: 10);
+    }
+  }
+  &--gray {
+    color: $white;
+    background-color: $gray;
+    transition: background-color 200ms ease-in-out;
+    &:hover {
+      background-color: lighten($color: $gray, $amount: 10);
+    }
+  }
+  &--light-gray {
+    color: $white;
+    background-color: $gray-light;
+    transition: background-color 200ms ease-in-out;
+    &:hover {
+      background-color: lighten($color: $gray-light, $amount: 10);
     }
   }
 }

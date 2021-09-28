@@ -41,16 +41,14 @@ const AuthLogin = () => {
     <div className='container --w-100 --center'>
       <form onSubmit={onLoginHandler} className='login'>
         <div className='logo --mb-large'>
-          <Link to='/' className='text--decoration-none'>
-            <h1 className='text text--size-subtitle text--color-primary text--center'>
-              rrgallery
-            </h1>
-          </Link>
+          <h1 className='text text--size-subtitle text--color-light-gray text--center'>
+            login
+          </h1>
         </div>
         <input
           onFocus={onFocus}
           onBlur={onBlur}
-          className='input input-field --mt-regular'
+          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
           type='email'
           placeholder='email'
           name='email'
@@ -61,7 +59,7 @@ const AuthLogin = () => {
         <input
           onFocus={onFocus}
           onBlur={onBlur}
-          className='input input-field --mt-regular'
+          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
           type='password'
           placeholder='password'
           name='password'
@@ -70,12 +68,12 @@ const AuthLogin = () => {
           onChange={onChangeHandler}
         />
         <Button
-          className='btn text--size-small btn--primary --mt-large --w-50 btn--radius-4'
+          className='text--size-small --mt-large --w-50 btn--radius-4 btn btn--light-gray'
           value='Log in'
           type='submit'
         />
         <Link
-          className='text text--size-small text--decoration-none text--center --mt-regular'
+          className='text text--size-small text--decoration-none text--center --mt-small'
           to='/auth/register'>
           Don't have an account?{" "}
           <span className='text--decoration-underline text--hover-primary'>
@@ -83,13 +81,12 @@ const AuthLogin = () => {
           </span>
           ...
         </Link>
-        <p className='text text--size-regular --mt-regular'>Or</p>
+        <p className='text text--size-regular --mt-large'>Or</p>
         <GoogleButton
           className='--mt-regular'
           onClick={dispatch(SignInWithGoogle)}
         />
       </form>
-      <img className='background--top' src={background} alt='' />
     </div>
   );
 };
