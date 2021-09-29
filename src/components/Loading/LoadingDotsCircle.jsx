@@ -22,7 +22,7 @@ const LoadingDotsCircle = () => {
   };
 
   return (
-    <div className='--full-w-h --center loading'>
+    <div className='loading --center'>
       <Lottie
         style={defaultStyle}
         options={defaultOptions}

@@ -8,6 +8,7 @@
     padding-bottom: $padding-regular;
     display: flex;
     flex-direction: column;
+    position: relative;
     &-top {
       display: flex;
       flex-direction: row;
