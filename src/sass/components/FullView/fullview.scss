@@ -1,0 +1,54 @@
+@use '../../abstract/index' as *;
+
+.fullview {
+  &-content {
+    width: 100%;
+    @include shadow();
+    padding: $padding-extra-small;
+    padding-bottom: $padding-regular;
+    display: flex;
+    flex-direction: column;
+    &-top {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: $padding-small;
+    }
+    &-divisor {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $gray-extra-light;
+    }
+    &__image {
+      width: 100%;
+    }
+    &-actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1em;
+      padding: $padding-small;
+      &__action {
+        width: 16px;
+        height: 16px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .fullview {
+    &-content {
+      width: 60%;
+      max-width: 900px;
+      padding: $padding-regular;
+      @include shadow();
+      border-radius: 8px;
+    }
+  }
+}

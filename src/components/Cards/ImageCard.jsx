@@ -1,42 +1,52 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import zoomImage from "../../assets/img/zoom.svg";
-import downloadImage from "../../assets/img/download.svg";
+import downSvg from "../../assets/img/download.svg";
 import bookmarkImage from "../../assets/img/bookmark.svg";
 import likeImage from "../../assets/img/heart.svg";
 
 import "../../sass/components/Cards/card.scss";
+import { downloadImage } from "../../helpers/Unsplash/getimages";
+import { useState } from "react";
+import LoadingDotsCircle from "../Loading/LoadingDotsCircle";
 
 const ImageCard = ({ img = {} }) => {
-  const onDownloadHandler = async (e) => {
-    const downloadLink = `${img.links.download_location}&client_id=lirba6ghVGu1uzhSgzE5RVKs80hfdQcRBJTJFvx34d8`;
-    const res = await fetch(downloadLink)
-      .then(() => {
-        const a = document.createElement("a");
-        a.href = `${img.links.download}?force=true`;
-        a.download = `${img.id}.jpg`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    return res.json();
+  const history = useHistory();
+  const [loading, setLoading] = useState(true);
+
+  const onViewFullHandler = () => {
+    history.replace(`/photo?id=${img.id}`);
+  };
+
+  const onDownloadHandler = () => {
+    downloadImage(img);
+  };
+
+  const onLoadHandler = (e) => {
+    e.target.classList.add("card__img--loaded");
+    setLoading(false);
   };
 
   return (
     <div className='card'>
       <div className='card-img-wrapper'>
-        <div className='card-img-overlay'>
-          <img
-            className='card-img-overlay__zoom'
-            src={zoomImage}
-            alt='see full image'
-          />
-        </div>
+        {loading ? (
+          <div className='card-img-overlay card-img-overlay--loading'>
+            <LoadingDotsCircle />
+          </div>
+        ) : (
+          <div className='card-img-overlay' onClick={onViewFullHandler}>
+            <img
+              className='card-img-overlay__zoom'
+              src={zoomImage}
+              alt='see full image'
+              width='512px'
+            />
+          </div>
+        )}
         <img
-          onLoad={(e) => e.target.classList.add("card__img--loaded")}
+          onLoad={onLoadHandler}
           className='card__img'
           src={`${img.urls.raw}&w=512&ar=3:4&fit=crop`}
           alt={img.alt_description ? img.alt_description : "img"}
@@ -52,7 +62,7 @@ const ImageCard = ({ img = {} }) => {
           />
           <img
             className='card-user-actions__action'
-            src={downloadImage}
+            src={downSvg}
             alt='download'
             onClick={onDownloadHandler}
           />
@@ -70,11 +80,11 @@ const ImageCard = ({ img = {} }) => {
             crossOrigin='anonymous'
           />
         </a>
-        <p className='text text--color-light-gray text--center --mt-small --w-100 text--overflow-ellipsis'>
+        <p className='text text--color-gray text--center --mt-small --w-100 text--overflow-ellipsis'>
           Photo by
           <br />
           <a
-            className='text--color-light-gray text--decoration-underline text--hover-primary'
+            className='text--color-gray text--decoration-underline text--hover-primary'
             href={img.user.links.html}
             rel='noreferrer'
             target='_blank'>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
+import FullView from "../components/FullView/FullView";
 
 import Navbar from "../components/Navbar/Navbar";
 import HomePage from "../pages/HomePage";
@@ -14,6 +15,7 @@ const HomeRouter = ({ history }) => {
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route exact path='/search' component={SearchPage} />
+        <Route exact path='/photo' component={FullView} />
         <Route path='/auth' component={AuthRouter} />
         <Redirect to='/' />
       </Switch>

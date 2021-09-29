@@ -6,8 +6,7 @@
   transition: color 200ms ease-in-out;
   &--hover {
     &-primary:hover {
-      transition: color 200ms ease-in-out;
-      color: lighten($color: $primary, $amount: 10);
+      color: $primary;
     }
   }
   &--center {

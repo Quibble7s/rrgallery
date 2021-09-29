@@ -1,5 +1,5 @@
 const k = "client_id=lirba6ghVGu1uzhSgzE5RVKs80hfdQcRBJTJFvx34d8";
-const apiRoute = "https://api.unsplash.com/";
+const apiRoute = "https://api.unsplash.com";
 const perPage = 18;
 
 export const getNewPhotos = async (page) => {
@@ -25,4 +25,26 @@ export const searchPhotos = async (keywords, page) => {
   );
   const data = await res.json();
   return [data.results, data.total_pages];
+};
+
+export const getImage = async (id) => {
+  const res = await fetch(`${apiRoute}/photos/${id}?${k}`);
+  const data = await res.json();
+  return data;
+};
+
+export const downloadImage = async (img) => {
+  const downloadLink = `${img.links.download_location}&${k}`;
+  const res = await fetch(downloadLink)
+    .then(() => {
+      const a = document.createElement("a");
+      a.href = `${img.links.download}?force=true`;
+      a.download = `${img.id}.jpg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };

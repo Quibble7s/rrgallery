@@ -6,7 +6,7 @@ const SearchBar = ({ value, onChange = () => null }) => {
   return (
     <input
       onChange={onChange}
-      className='searchbar input input-field-light-gray input-field--color-light-gray input-field--placeholder-light-gray'
+      className='searchbar input input-field-gray input-field--color-gray input-field--placeholder-gray'
       name='searchbar'
       id='searchbar'
       type='text'

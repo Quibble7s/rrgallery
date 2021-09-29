@@ -27,9 +27,7 @@ const Navbar = () => {
   return (
     <nav className='nav'>
       <Link className='text--decoration-none' to='/'>
-        <h1 className='text text--size-title text--color-light-gray text--hover-primary'>
-          rrgallery
-        </h1>
+        <h1 className='text text--size-title text--color-primary'>rrgallery</h1>
       </Link>
       <form onSubmit={onSearchSubmit} className='search-form'>
         <ImageButton
