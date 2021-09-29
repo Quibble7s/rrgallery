@@ -36,14 +36,7 @@ const ImageCard = ({ img = {} }) => {
             <LoadingDotsCircle />
           </div>
         ) : (
-          <div className='card-img-overlay' onClick={onViewFullHandler}>
-            <img
-              className='card-img-overlay__zoom'
-              src={zoomImage}
-              alt='see full image'
-              width='512px'
-            />
-          </div>
+          <div className='card-img-overlay' onClick={onViewFullHandler}></div>
         )}
         <img
           onLoad={onLoadHandler}
