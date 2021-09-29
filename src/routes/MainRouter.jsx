@@ -18,7 +18,6 @@ const MainRouter = () => {
         <Switch>
           <PrivateRouter
             loged={auth.loged}
-            exact
             path='/user'
             component={UserRouter}
           />
