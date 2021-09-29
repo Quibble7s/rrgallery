@@ -21,13 +21,15 @@ const Navbar = () => {
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
-    history.replace(`/search?q=${encodeURI(inputValue.toLowerCase())}&p=${1}`);
+    history.push(`/search?q=${encodeURI(inputValue.toLowerCase())}&p=${1}`);
   };
 
   return (
     <nav className='nav'>
       <Link className='text--decoration-none' to='/'>
-        <h1 className='text text--size-title text--color-primary'>rrgallery</h1>
+        <h1 className='text text--size-title text--color-gray text--hover-black'>
+          rrgallery
+        </h1>
       </Link>
       <form onSubmit={onSearchSubmit} className='search-form'>
         <ImageButton

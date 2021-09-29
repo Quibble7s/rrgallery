@@ -14,9 +14,9 @@ const HomeRouter = ({ history }) => {
       {!history.location.pathname.includes("/auth") && <Navbar />}
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route exact path='/search' component={SearchPage} />
-        <Route exact path='/photo' component={FullView} />
         <Route path='/auth' component={AuthRouter} />
+        <Route path='/photo' component={FullView} />
+        <Route path='/search' component={SearchPage} />
         <Redirect to='/' />
       </Switch>
       {!history.location.pathname.includes("/auth") && <Footer />}

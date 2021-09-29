@@ -21,6 +21,7 @@
   &-img-wrapper {
     display: flex;
     position: relative;
+    min-height: 128px;
   }
   &-img-overlay {
     width: 100%;

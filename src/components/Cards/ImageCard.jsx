@@ -16,7 +16,7 @@ const ImageCard = ({ img = {} }) => {
   const [loading, setLoading] = useState(true);
 
   const onViewFullHandler = () => {
-    history.replace(`/photo?id=${img.id}`);
+    history.push(`/photo?id=${img.id}`);
   };
 
   const onDownloadHandler = () => {
@@ -84,7 +84,7 @@ const ImageCard = ({ img = {} }) => {
           Photo by
           <br />
           <a
-            className='text--color-gray text--decoration-underline text--hover-primary'
+            className='text--color-gray text--decoration-underline text--hover-black'
             href={img.user.links.html}
             rel='noreferrer'
             target='_blank'>
