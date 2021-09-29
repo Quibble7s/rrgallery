@@ -19,7 +19,8 @@ const FullView = () => {
   const onDownloadHandler = async () => {
     downloadImage(img);
   };
-  const onLoadHandler = () => {
+  const onLoadHandler = (e) => {
+    e.target.classList.add("fullview-content__image--loaded");
     setLoading(false);
   };
   return (

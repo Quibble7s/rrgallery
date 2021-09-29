@@ -27,7 +27,7 @@ const Navbar = () => {
   return (
     <nav className='nav'>
       <Link className='text--decoration-none' to='/'>
-        <h1 className='text text--size-title text--color-gray text--hover-black'>
+        <h1 className='text text--size-title text--color-gray text--hover-gray'>
           rrgallery
         </h1>
       </Link>

@@ -1,4 +1,16 @@
+@use '../../abstract/index' as *;
+
 .searchbar {
   flex: 1 1 auto;
-  max-width: 450px;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  padding: $padding-small;
+  border-radius: 8px;
+  background-color: $gray-extra-light;
 }

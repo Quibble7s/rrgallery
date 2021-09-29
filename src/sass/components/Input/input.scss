@@ -86,13 +86,3 @@
     animation: input-field-active forwards 200ms linear;
   }
 }
-
-.search-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-end;
-  width: 100%;
-  padding: $padding-extra-small;
-  border-radius: 8px;
-}

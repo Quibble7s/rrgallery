@@ -9,6 +9,7 @@ import HomeRouter from "./HomeRouter";
 
 import "../sass/components/container/container.scss";
 import { useSelector } from "react-redux";
+import LoadingDotsLine from "../components/Loading/LoadingDotsLine";
 const MainRouter = () => {
   useOnAuthChange();
   const { auth } = useSelector((state) => state);
@@ -16,12 +17,18 @@ const MainRouter = () => {
     <>
       <Router>
         <Switch>
-          <PrivateRouter
-            loged={auth.loged}
-            path='/user'
-            component={UserRouter}
-          />
-          <PublicRouter path='/' component={HomeRouter} />
+          {!auth ? (
+            <LoadingDotsLine />
+          ) : (
+            <>
+              <PrivateRouter
+                loged={auth.loged}
+                path='/user'
+                component={UserRouter}
+              />
+              <PublicRouter path='/' component={HomeRouter} />
+            </>
+          )}
         </Switch>
       </Router>
     </>
