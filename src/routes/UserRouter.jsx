@@ -1,10 +1,12 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
+import UserProfile from "../pages/UserProfile";
 
 const UserRouter = () => {
   return (
-    <div>
-      <h1>//Recordar hacer esta parte. (Si, hice un autorecordatorio xD)</h1>
-    </div>
+    <Switch>
+      <Route exact path='/user/:id/profile' component={UserProfile} />
+    </Switch>
   );
 };
 

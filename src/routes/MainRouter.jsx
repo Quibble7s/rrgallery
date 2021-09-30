@@ -17,18 +17,13 @@ const MainRouter = () => {
     <>
       <Router>
         <Switch>
-          {!auth ? (
-            <LoadingDotsLine />
-          ) : (
-            <>
-              <PrivateRouter
-                loged={auth.loged}
-                path='/user'
-                component={UserRouter}
-              />
-              <PublicRouter path='/' component={HomeRouter} />
-            </>
-          )}
+          {!auth && <LoadingDotsLine />}
+          <PrivateRouter
+            loged={auth?.loged}
+            path='/user'
+            component={UserRouter}
+          />
+          <PublicRouter path='/' component={HomeRouter} />
         </Switch>
       </Router>
     </>

@@ -11,13 +11,15 @@ const AuthRouter = () => {
     <>
       <Switch>
         <Route
+          exact
           path='/auth/login'
-          component={() => (!auth.loged ? <AuthLogin /> : <Redirect to='/' />)}
+          component={() => (!auth?.loged ? <AuthLogin /> : <Redirect to='/' />)}
         />
         <Route
+          exact
           path='/auth/register'
           component={() =>
-            !auth.loged ? <AuthRegister /> : <Redirect to='/' />
+            !auth?.loged ? <AuthRegister /> : <Redirect to='/' />
           }
         />
         <Redirect to='/auth/login' />
