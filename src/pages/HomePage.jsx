@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { useGetNewImages } from "../hooks/useGetNewImages";
 
@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <>
       <div className='container --w-100 --center'>
-        <div className='container --w-75 --gap-1 --center-row --padding-regular --warp --mt-large'>
+        <div className='container --w-75 --gap-2 --center-row --padding-regular --warp --mt-large'>
           {!response?.data ? (
             <LoadingDotsLine />
           ) : (
@@ -22,4 +22,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default memo(HomePage);

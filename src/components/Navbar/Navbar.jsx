@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 
@@ -45,4 +45,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar);

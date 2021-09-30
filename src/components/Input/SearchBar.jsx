@@ -1,11 +1,13 @@
-import React from "react";
+import React, { memo } from "react";
+import { useCallback } from "react";
 
 import "../../sass/components/Input/searchbar.scss";
 
 const SearchBar = ({ value, onChange = () => null }) => {
+  const onInputChange = useCallback((e) => onChange(e), []);
   return (
     <input
-      onChange={onChange}
+      onChange={onInputChange}
       className='searchbar input input-field-gray input-field--color-gray input-field--placeholder-gray'
       name='searchbar'
       id='searchbar'
@@ -17,4 +19,4 @@ const SearchBar = ({ value, onChange = () => null }) => {
   );
 };
 
-export default SearchBar;
+export default memo(SearchBar);

@@ -1,15 +1,16 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
-import zoomImage from "../../assets/img/zoom.svg";
+import LoadingDotsCircle from "../Loading/LoadingDotsCircle";
+
+import { downloadImage } from "../../helpers/Unsplash/getimages";
+
 import downSvg from "../../assets/img/download.svg";
 import bookmarkImage from "../../assets/img/bookmark.svg";
 import likeImage from "../../assets/img/heart.svg";
 
 import "../../sass/components/Cards/card.scss";
-import { downloadImage } from "../../helpers/Unsplash/getimages";
-import { useState } from "react";
-import LoadingDotsCircle from "../Loading/LoadingDotsCircle";
 
 const ImageCard = ({ img = {} }) => {
   const history = useHistory();

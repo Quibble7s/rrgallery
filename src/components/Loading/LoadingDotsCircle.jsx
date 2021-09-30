@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Lottie from "react-lottie";
 
 import loadingAnim from "../../models/animations/loading_anim.json";
@@ -32,4 +32,4 @@ const LoadingDotsCircle = () => {
   );
 };
 
-export default LoadingDotsCircle;
+export default memo(LoadingDotsCircle);

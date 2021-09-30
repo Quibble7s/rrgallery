@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Lottie from "react-lottie";
 
 import loadingAnim from "../../models/animations/loading_horizontal_anim.json";
@@ -30,4 +30,4 @@ const LoadingDotsLine = () => {
   );
 };
 
-export default LoadingDotsLine;
+export default memo(LoadingDotsLine);

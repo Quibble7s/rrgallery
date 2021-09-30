@@ -1,10 +1,12 @@
+import { useCallback } from "react";
 import { useEffect, useState } from "react";
 import { searchPhotos } from "../helpers/Unsplash/getimages";
 
 export const useSearchNewImages = (keywords, page) => {
   const [[images, pages], setImages] = useState([null, null]);
+  const SearchPhotos = useCallback((k, p) => searchPhotos(k, p), []);
   useEffect(() => {
-    searchPhotos(keywords, page)
+    SearchPhotos(keywords, page)
       .then((val) => {
         setImages([val[0], val[1]]);
       })

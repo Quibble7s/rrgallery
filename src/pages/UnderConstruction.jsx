@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Lottie from "react-lottie";
 import { useHistory } from "react-router-dom";
 import Button from "../components/Buttons/Button";
@@ -48,4 +48,4 @@ const UnderConstruction = () => {
   );
 };
 
-export default UnderConstruction;
+export default memo(UnderConstruction);

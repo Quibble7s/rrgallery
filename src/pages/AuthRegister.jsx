@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../components/Buttons/Button";
@@ -123,4 +123,4 @@ const AuthRegister = () => {
   );
 };
 
-export default AuthRegister;
+export default memo(AuthRegister);

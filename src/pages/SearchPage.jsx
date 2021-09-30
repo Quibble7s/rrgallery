@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import queryString from "query-string";
 import { useLocation } from "react-router-dom";
 
@@ -15,7 +15,7 @@ const SearchPage = () => {
   return (
     <>
       <div className='container --w-100 --center'>
-        <div className='container --w-75 --gap-1 --center-row --padding-regular --warp --mt-large'>
+        <div className='container --w-75 --gap-2 --center-row --padding-regular --warp --mt-large'>
           {!images ? (
             <LoadingDotsLine />
           ) : (
@@ -27,4 +27,4 @@ const SearchPage = () => {
   );
 };
 
-export default SearchPage;
+export default memo(SearchPage);

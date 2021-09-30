@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -11,9 +11,6 @@ import {
 import { useOnElementActive } from "../hooks/useOnElementActive";
 
 import Button from "../components/Buttons/Button";
-
-import gallery from "../assets/img/gallery.svg";
-import background from "../assets/img/background/login-background-top.svg";
 
 import "../sass/pages/login.scss";
 import "../sass/components/Input/input.scss";
@@ -91,4 +88,4 @@ const AuthLogin = () => {
   );
 };
 
-export default AuthLogin;
+export default memo(AuthLogin);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { useGetImageWithLocation } from "../../hooks/useGetImageWithLocation";
 
@@ -85,4 +85,4 @@ const FullView = () => {
   );
 };
 
-export default FullView;
+export default memo(FullView);

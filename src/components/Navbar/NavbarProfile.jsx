@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -150,4 +150,4 @@ const NavbarProfile = ({ uid, photoURL }) => {
   );
 };
 
-export default NavbarProfile;
+export default memo(NavbarProfile);
