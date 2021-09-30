@@ -36,14 +36,14 @@ const AuthRegister = () => {
   return (
     <div className='container --w-100 --center'>
       <form onSubmit={onRegisterHandler} className='register'>
-        <h1 className='text text--size-subtitle text--color-light-gray text--center --mb-regular'>
+        <h1 className='text text--size-subtitle text--color-gray text--center --mb-regular'>
           Register
         </h1>
         <input
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
+          className='input input-field-gray input-field--placeholder-gray --mt-large'
           name='username'
           id='username'
           type='text'
@@ -56,7 +56,7 @@ const AuthRegister = () => {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
+          className='input input-field-gray input-field--placeholder-gray --mt-large'
           name='email'
           id='email'
           type='email'
@@ -69,7 +69,7 @@ const AuthRegister = () => {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
+          className='input input-field-gray input-field--placeholder-gray --mt-large'
           name='confirmemail'
           id='confirmemail'
           type='email'
@@ -82,7 +82,7 @@ const AuthRegister = () => {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
+          className='input input-field-gray input-field--placeholder-gray --mt-large'
           name='password'
           id='password'
           type='password'
@@ -95,7 +95,7 @@ const AuthRegister = () => {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChangeHandler}
-          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
+          className='input input-field-gray input-field--placeholder-gray --mt-large'
           name='confirmpassword'
           id='confirmpassword'
           type='password'
@@ -105,7 +105,7 @@ const AuthRegister = () => {
           autoComplete='off'
         />
         <Button
-          className='btn text--size-small btn--light-gray --mt-large --w-50 btn--radius-4'
+          className='btn text--size-small btn--primary --mt-large --w-50 btn--radius-4'
           value='Register'
           type='submit'
         />

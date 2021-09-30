@@ -7,7 +7,6 @@ import LoadingDotsLine from "../components/Loading/LoadingDotsLine";
 
 const HomePage = () => {
   const [response] = useGetNewImages();
-  console.log("loaded");
   return (
     <>
       <div className='container --w-100 --center'>

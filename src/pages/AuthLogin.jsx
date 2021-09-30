@@ -41,14 +41,14 @@ const AuthLogin = () => {
     <div className='container --w-100 --center'>
       <form onSubmit={onLoginHandler} className='login'>
         <div className='logo --mb-large'>
-          <h1 className='text text--size-subtitle text--color-light-gray text--center'>
+          <h1 className='text text--size-subtitle text--color-gray text--center'>
             login
           </h1>
         </div>
         <input
           onFocus={onFocus}
           onBlur={onBlur}
-          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
+          className='input input-field-gray input-field--placeholder-gray --mt-large'
           type='email'
           placeholder='email'
           name='email'
@@ -59,7 +59,7 @@ const AuthLogin = () => {
         <input
           onFocus={onFocus}
           onBlur={onBlur}
-          className='input input-field-light-gray input-field--placeholder-light-gray --mt-large'
+          className='input input-field-gray input-field--placeholder-gray --mt-large'
           type='password'
           placeholder='password'
           name='password'
@@ -68,7 +68,7 @@ const AuthLogin = () => {
           onChange={onChangeHandler}
         />
         <Button
-          className='text--size-small --mt-large --w-50 btn--radius-4 btn btn--light-gray'
+          className='text--size-small --mt-large --w-50 btn--radius-4 btn btn--primary'
           value='Log in'
           type='submit'
         />

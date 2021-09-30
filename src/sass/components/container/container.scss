@@ -176,6 +176,14 @@ body {
   }
 }
 
+.--underline {
+  &-primary {
+    width: 100%;
+    height: 2px;
+    background-color: $primary;
+  }
+}
+
 .background {
   &--bottom {
     @include background-bottom();

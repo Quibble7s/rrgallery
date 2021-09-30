@@ -23,6 +23,7 @@
   border-radius: 8px;
   @include shadow();
   border: 1px solid lighten($color: $gray-extra-light, $amount: 3.5);
+  border-top-left-radius: 0;
   position: relative;
   animation: slide-in forwards 200ms ease-in-out;
 }

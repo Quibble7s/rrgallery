@@ -40,7 +40,7 @@ const Navbar = () => {
         />
         <SearchBar onChange={onSearchChange} value={inputValue} />
       </form>
-      <NavbarProfile uid={auth.uid} photoURL={auth.photoURL} />
+      <NavbarProfile uid={auth?.uid} photoURL={auth?.photoURL} />
     </nav>
   );
 };

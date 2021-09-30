@@ -54,7 +54,7 @@ const NavbarProfile = ({ uid, photoURL }) => {
         alt='pfp'
       />
       <div id='dropdown' className='nav-profile-dropdown'>
-        {auth.loged ? (
+        {auth?.loged ? (
           <>
             <div>
               <img
