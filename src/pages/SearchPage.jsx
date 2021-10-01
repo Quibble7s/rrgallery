@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import queryString from "query-string";
 import { useLocation } from "react-router-dom";
 
@@ -6,11 +6,67 @@ import LoadingDotsLine from "../components/Loading/LoadingDotsLine";
 import ImageCard from "../components/Cards/ImageCard";
 
 import { useSearchNewImages } from "../hooks/useSearchImages";
+import {
+  NEXT_SECCTION,
+  PREVIOUS_SECCTION,
+  RANGE,
+} from "../models/constants/pagination";
+import Pagination from "../components/Pagination/Pagination";
+import { useMemo } from "react";
+import { useEffect } from "react";
 
-const SearchPage = () => {
+const SearchPage = ({ history }) => {
+  //Getting the parameters of the query
   const location = useLocation();
   const { q = "", p = "" } = queryString.parse(location.search);
+
+  //Images
   const [images, pages] = useSearchNewImages(q, p);
+  //Pagination stuff
+  const [currentPage, setCurrentPage] = useState(parseInt(p));
+  const [startPage, setStartPage] = useState(1);
+  const [endPage, setEndPage] = useState(RANGE);
+
+  //Calculating sections of the pagination
+  const totalSections = useMemo(() => {
+    return Math.floor(pages / RANGE);
+  }, [q]);
+
+  //Calculating in what secction of the pagination we are depending on the currentPage
+  const currentSection = useMemo(() => {
+    return Math.floor(currentPage / RANGE + 0.75);
+  }, [currentPage]);
+
+  //Calculating the end page and the start page of the secction
+  const endP = currentSection * RANGE;
+  const startP = endP - (RANGE - 1);
+
+  //Setting the start page and the end page
+  useEffect(() => {
+    setStartPage(startP);
+    setEndPage(endP);
+  }, [currentSection]);
+
+  const onPageChangeHandler = (e) => {
+    const val =
+      e.target.value !== NEXT_SECCTION && e.target.value !== PREVIOUS_SECCTION
+        ? parseInt(e.target.value)
+        : e.target.value;
+    let selectedPage = 1;
+    if (val !== NEXT_SECCTION && val !== PREVIOUS_SECCTION && val !== pages) {
+      selectedPage = val;
+    } else {
+      if (e.target.value === NEXT_SECCTION) {
+        selectedPage = endPage + 1;
+      } else if (e.target.value === PREVIOUS_SECCTION) {
+        selectedPage = startPage - 1;
+      } else {
+        selectedPage = pages;
+      }
+    }
+    setCurrentPage(selectedPage);
+    history.push(`/search?q=${q}&p=${selectedPage}`);
+  };
 
   return (
     <>
@@ -20,6 +76,16 @@ const SearchPage = () => {
             <LoadingDotsLine />
           ) : (
             images?.map((img) => <ImageCard key={img.id} img={img} />)
+          )}
+          {images && pages && (
+            <Pagination
+              currentPage={currentPage}
+              startPage={startPage}
+              endPage={endPage}
+              totalPages={pages}
+              range={RANGE}
+              onPageChange={onPageChangeHandler}
+            />
           )}
         </div>
       </div>

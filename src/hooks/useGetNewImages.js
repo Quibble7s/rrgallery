@@ -2,14 +2,11 @@ import { useCallback } from "react";
 import { useEffect, useState } from "react";
 import { getNewPhotos } from "../helpers/Unsplash/getimages";
 
-export const useGetNewImages = () => {
+export const useGetNewImages = (page, dependencies = []) => {
   const [response, setData] = useState(null);
-  const GetNewPhotos = useCallback(
-    (keywords, page) => getNewPhotos(keywords, page),
-    [],
-  );
+  const GetNewPhotos = useCallback((page) => getNewPhotos(page), []);
   useEffect(() => {
-    GetNewPhotos(18, 1)
+    GetNewPhotos(page)
       .then((val) => setData({ data: val[0], nTotal: val[1] }))
       .catch(() => {
         setData(null);
@@ -17,7 +14,7 @@ export const useGetNewImages = () => {
     return () => {
       setData(null);
     };
-  }, []);
+  }, [...dependencies]);
 
   return [response];
 };

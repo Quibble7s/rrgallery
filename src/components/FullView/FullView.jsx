@@ -55,7 +55,7 @@ const FullView = () => {
             <img
               onLoad={onLoadHandler}
               className='fullview-content__image'
-              src={`${img?.urls.raw}&w=2048`}
+              src={`${img?.urls.raw}&w=1024`}
               alt={img?.alt_description ? img?.alt_description : "img"}
               crossOrigin='anonymous'
             />
