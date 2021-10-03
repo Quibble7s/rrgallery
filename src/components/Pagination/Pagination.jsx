@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 import PaginationButton from "../Buttons/PaginationButton";
 
 import {
-  HOME,
   NEXT_SECCTION,
   PREVIOUS_SECCTION,
 } from "../../models/constants/pagination";
@@ -87,7 +86,7 @@ const Pagination = ({
       }
     }
     return buttons;
-  });
+  }, [currentPage, endPage, startPage, range, totalPages, onPageChange]);
   return <div className='pagination'>{loadButtons()}</div>;
 };
 

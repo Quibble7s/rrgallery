@@ -67,7 +67,7 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       &__action {
         width: 16px;
-        opacity: 0.5;
+        @include fade-in(200ms);
         &:hover {
           cursor: pointer;
         }

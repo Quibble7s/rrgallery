@@ -1,24 +1,33 @@
 import React, { memo } from "react";
+import { useState } from "react";
 
+import { useSocialEvents } from "../../hooks/useSocialEvents";
 import { useGetImageWithLocation } from "../../hooks/useGetImageWithLocation";
 
 import LoadingDotsCircle from "../Loading/LoadingDotsCircle";
-import { downloadImage } from "../../helpers/Unsplash/getimages";
+import LoadingDotsLine from "../Loading/LoadingDotsLine";
 
 import downSvg from "../../assets/img/download.svg";
 import bookmarkImage from "../../assets/img/bookmark.svg";
 import likeImage from "../../assets/img/heart.svg";
+import bookmarkImageActive from "../../assets/img/bookmark-active.svg";
+import likeImageActive from "../../assets/img/heart-active.svg";
 
 import "../../sass/components/FullView/fullview.scss";
-import { useState } from "react";
-import LoadingDotsLine from "../Loading/LoadingDotsLine";
 
 const FullView = () => {
   const [loading, setLoading] = useState(true);
   const img = useGetImageWithLocation();
-  const onDownloadHandler = async () => {
-    downloadImage(img);
-  };
+  const [
+    onDownloadHandler,
+    onLikeImageHandler,
+    onBookmarkImageHandler,
+    onRemoveLikeHandler,
+    onRemoveBookmarkHandler,
+    liked,
+    bookmarked,
+  ] = useSocialEvents(img);
+
   const onLoadHandler = (e) => {
     e.target.classList.add("fullview-content__image--loaded");
     setLoading(false);
@@ -61,8 +70,9 @@ const FullView = () => {
             />
             <div className='fullview-content-actions'>
               <img
+                onClick={!liked ? onLikeImageHandler : onRemoveLikeHandler}
                 className='fullview-content-actions__action'
-                src={likeImage}
+                src={!liked ? likeImage : likeImageActive}
                 alt='Like'
               />
               <img
@@ -72,8 +82,11 @@ const FullView = () => {
                 alt='Download'
               />
               <img
+                onClick={
+                  !bookmarked ? onBookmarkImageHandler : onRemoveBookmarkHandler
+                }
                 className='fullview-content-actions__action'
-                src={bookmarkImage}
+                src={!bookmarked ? bookmarkImage : bookmarkImageActive}
                 alt='Bookmark'
               />
             </div>

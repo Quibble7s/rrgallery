@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import "../../sass/components/Input/searchbar.scss";
 
 const SearchBar = ({ value, onChange = () => null }) => {
-  const onInputChange = useCallback((e) => onChange(e), []);
+  const onInputChange = useCallback((e) => onChange(e), [onChange]);
   return (
     <input
       onChange={onInputChange}

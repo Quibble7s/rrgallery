@@ -27,11 +27,6 @@ const SearchPage = ({ history }) => {
   const [startPage, setStartPage] = useState(1);
   const [endPage, setEndPage] = useState(RANGE);
 
-  //Calculating sections of the pagination
-  const totalSections = useMemo(() => {
-    return Math.floor(pages / RANGE);
-  }, [q]);
-
   //Calculating in what secction of the pagination we are depending on the currentPage
   const currentSection = useMemo(() => {
     return Math.floor(currentPage / RANGE + 0.75);
@@ -45,7 +40,7 @@ const SearchPage = ({ history }) => {
   useEffect(() => {
     setStartPage(startP);
     setEndPage(endP);
-  }, [currentSection]);
+  }, [currentSection, pages, endP, startP]);
 
   const onPageChangeHandler = (e) => {
     const val =

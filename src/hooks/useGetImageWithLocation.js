@@ -16,6 +16,6 @@ export const useGetImageWithLocation = () => {
       .catch(() => {
         setImg(null);
       });
-  }, []);
+  }, [GetImages, id]);
   return img;
 };

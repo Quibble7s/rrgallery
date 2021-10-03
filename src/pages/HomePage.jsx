@@ -1,18 +1,28 @@
 import React, { memo, useState } from "react";
+import { useSelector } from "react-redux";
 
 import { useGetNewImages } from "../hooks/useGetNewImages";
+import { addUser } from "../helpers/Firebase/database";
+
+import ImageCard from "../components/Cards/ImageCard";
+import LoadingDotsLine from "../components/Loading/LoadingDotsLine";
+import Pagination from "../components/Pagination/Pagination";
 
 import {
   NEXT_SECCTION,
   PREVIOUS_SECCTION,
   RANGE,
 } from "../models/constants/pagination";
-
-import ImageCard from "../components/Cards/ImageCard";
-import LoadingDotsLine from "../components/Loading/LoadingDotsLine";
-import Pagination from "../components/Pagination/Pagination";
+import { useEffect } from "react";
 
 const HomePage = () => {
+  //Add the user to the database if it doesn't exist
+  const { auth } = useSelector((state) => state);
+  useEffect(() => {
+    if (auth.loged) {
+      addUser(auth.uid);
+    }
+  }, [auth.loged, auth.uid]);
   //Pagination stuff
   const range = RANGE;
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,7 +30,7 @@ const HomePage = () => {
   const [endPage, setEndPage] = useState(range);
 
   //Fetching data
-  const [response] = useGetNewImages(currentPage, [currentPage]);
+  const [response] = useGetNewImages(currentPage);
 
   //setting the current page based on the value of the button clicked
   const onPageChangeHandler = (e) => {
@@ -54,6 +64,7 @@ const HomePage = () => {
       setCurrentPage(page);
     }
   };
+
   return (
     <>
       <div className='container --w-100 --center'>

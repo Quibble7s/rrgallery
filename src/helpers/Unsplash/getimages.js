@@ -35,7 +35,7 @@ export const getImage = async (id) => {
 
 export const downloadImage = async (img) => {
   const downloadLink = `${img.links.download_location}&${k}`;
-  const res = await fetch(downloadLink)
+  await fetch(downloadLink)
     .then(() => {
       const a = document.createElement("a");
       a.href = `${img.links.download}?force=true`;

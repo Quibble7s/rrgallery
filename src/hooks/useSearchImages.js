@@ -16,6 +16,6 @@ export const useSearchNewImages = (keywords, page) => {
     return () => {
       setImages([null, null]);
     };
-  }, [keywords, page]);
+  }, [keywords, page, SearchPhotos]);
   return [images, pages];
 };

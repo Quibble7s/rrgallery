@@ -36,14 +36,14 @@ const NavbarProfile = ({ uid, photoURL }) => {
         .querySelector("#dropdown")
         ?.classList.remove("nav-profile-dropdown--active");
     }
-  });
+  }, []);
 
   useEffect(() => {
     document.addEventListener("click", onClick);
     return () => {
       document.removeEventListener("click", onClick);
     };
-  }, []);
+  }, [onClick]);
 
   return (
     <div className='nav-profile'>

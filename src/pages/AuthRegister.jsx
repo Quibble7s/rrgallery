@@ -7,8 +7,6 @@ import { Register } from "../helpers/Actions/Auth";
 import { useOnChange } from "../hooks/useOnChange";
 import { useOnElementActive } from "../hooks/useOnElementActive";
 
-import backgroundTop from "../assets/img/background/login-background-top.svg";
-
 import "../sass/components/Input/input.scss";
 import "../sass/pages/register.scss";
 

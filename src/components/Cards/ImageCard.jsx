@@ -2,13 +2,15 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
-import LoadingDotsCircle from "../Loading/LoadingDotsCircle";
+import { useSocialEvents } from "../../hooks/useSocialEvents";
 
-import { downloadImage } from "../../helpers/Unsplash/getimages";
+import LoadingDotsCircle from "../Loading/LoadingDotsCircle";
 
 import downSvg from "../../assets/img/download.svg";
 import bookmarkImage from "../../assets/img/bookmark.svg";
 import likeImage from "../../assets/img/heart.svg";
+import bookmarkImageActive from "../../assets/img/bookmark-active.svg";
+import likeImageActive from "../../assets/img/heart-active.svg";
 
 import "../../sass/components/Cards/card.scss";
 
@@ -16,12 +18,18 @@ const ImageCard = ({ img = {} }) => {
   const history = useHistory();
   const [loading, setLoading] = useState(true);
 
+  const [
+    onDownloadHandler,
+    onLikeImageHandler,
+    onBookmarkImageHandler,
+    onRemoveLikeHandler,
+    onRemoveBookmarkHandler,
+    liked,
+    bookmarked,
+  ] = useSocialEvents(img);
+
   const onViewFullHandler = () => {
     history.push(`/photo?id=${img.id}`);
-  };
-
-  const onDownloadHandler = () => {
-    downloadImage(img);
   };
 
   const onLoadHandler = (e) => {
@@ -51,8 +59,9 @@ const ImageCard = ({ img = {} }) => {
         <div className='card-user-actions'>
           <img
             className='card-user-actions__action'
-            src={likeImage}
+            src={!liked ? likeImage : likeImageActive}
             alt='like'
+            onClick={!liked ? onLikeImageHandler : onRemoveLikeHandler}
           />
           <img
             className='card-user-actions__action'
@@ -62,8 +71,11 @@ const ImageCard = ({ img = {} }) => {
           />
           <img
             className='card-user-actions__action'
-            src={bookmarkImage}
+            src={!bookmarked ? bookmarkImage : bookmarkImageActive}
             alt='download'
+            onClick={
+              !bookmarked ? onBookmarkImageHandler : onRemoveBookmarkHandler
+            }
           />
         </div>
         <a href={img.user.links.html}>

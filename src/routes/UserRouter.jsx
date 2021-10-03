@@ -2,7 +2,6 @@ import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import Footer from "../components/Footer/Footer";
-import UserProfile from "../pages/UserProfile";
 
 import UnderConstruction from "../pages/UnderConstruction";
 

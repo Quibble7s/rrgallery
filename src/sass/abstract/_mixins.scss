@@ -1,5 +1,17 @@
 @use './colors' as *;
 
+@mixin fade-in($speed) {
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  animation: fade $speed forwards ease-in-out;
+}
+
 @mixin background-bottom {
   position: absolute;
   z-index: -1;
