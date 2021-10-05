@@ -1,0 +1,12 @@
+.image-radio-button {
+  &__img {
+    width: 100%;
+    max-width: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  .image-radio-button {
+    max-width: 24px;
+  }
+}

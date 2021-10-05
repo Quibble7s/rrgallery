@@ -39,6 +39,9 @@
     &-light-gray {
       border-bottom: 1px solid rgba($color: $gray-light, $alpha: 0.5);
     }
+    &-none {
+      border-bottom: none;
+    }
     animation: input-field-inactive forwards 200ms linear;
     &--color {
       &-white {

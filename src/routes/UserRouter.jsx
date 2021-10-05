@@ -1,17 +1,18 @@
-import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
-import Footer from "../components/Footer/Footer";
+import Footer from '../components/Footer/Footer';
+import UserProfile from '../pages/UserProfile';
 
-import UnderConstruction from "../pages/UnderConstruction";
+import UnderConstruction from '../pages/UnderConstruction';
+import Navbar from '../components/Navbar/Navbar';
 
 const UserRouter = () => {
   return (
     <>
+      <Navbar />
       <Switch>
-        <Route exact path='/user/:id/profile' component={UnderConstruction} />
-        <Route exact path='/user/:id/liked' component={UnderConstruction} />
-        <Route exact path='/user/:id/favorites' component={UnderConstruction} />
+        <Route exact path='/user/profile' component={UserProfile} />
         <Route exact path='/user/configuration' component={UnderConstruction} />
         <Redirect to='/' />
       </Switch>

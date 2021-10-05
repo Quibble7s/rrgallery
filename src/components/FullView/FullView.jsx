@@ -1,19 +1,20 @@
-import React, { memo } from "react";
-import { useState } from "react";
+import React, { memo } from 'react';
+import { useState } from 'react';
 
-import { useSocialEvents } from "../../hooks/useSocialEvents";
-import { useGetImageWithLocation } from "../../hooks/useGetImageWithLocation";
+import { useSocialEvents } from '../../hooks/useSocialEvents';
+import { useGetImageWithLocation } from '../../hooks/useGetImageWithLocation';
 
-import LoadingDotsCircle from "../Loading/LoadingDotsCircle";
-import LoadingDotsLine from "../Loading/LoadingDotsLine";
+import LoadingDotsCircle from '../Loading/LoadingDotsCircle';
+import LoadingDotsLine from '../Loading/LoadingDotsLine';
 
-import downSvg from "../../assets/img/download.svg";
-import bookmarkImage from "../../assets/img/bookmark.svg";
-import likeImage from "../../assets/img/heart.svg";
-import bookmarkImageActive from "../../assets/img/bookmark-active.svg";
-import likeImageActive from "../../assets/img/heart-active.svg";
+import downSvg from '../../assets/img/download.svg';
+import bookmarkImage from '../../assets/img/bookmark.svg';
+import likeImage from '../../assets/img/heart.svg';
+import bookmarkImageActive from '../../assets/img/bookmark-active.svg';
+import likeImageActive from '../../assets/img/heart-active.svg';
 
-import "../../sass/components/FullView/fullview.scss";
+import '../../sass/components/FullView/fullview.scss';
+import Loading from '../Loading/Loading';
 
 const FullView = () => {
   const [loading, setLoading] = useState(true);
@@ -26,10 +27,11 @@ const FullView = () => {
     onRemoveBookmarkHandler,
     liked,
     bookmarked,
+    socialsLoading,
   ] = useSocialEvents(img);
 
   const onLoadHandler = (e) => {
-    e.target.classList.add("fullview-content__image--loaded");
+    e.target.classList.add('fullview-content__image--loaded');
     setLoading(false);
   };
   return (
@@ -58,37 +60,46 @@ const FullView = () => {
                 href={img?.user.links.html}
                 rel='noreferrer'
                 target='_blank'>
-                {`@${img?.user.username ? img.user.username : "user"}`}
+                {`@${img?.user.username ? img.user.username : 'user'}`}
               </a>
             </div>
             <img
               onLoad={onLoadHandler}
               className='fullview-content__image'
               src={`${img?.urls.raw}&w=1024`}
-              alt={img?.alt_description ? img?.alt_description : "img"}
+              alt={img?.alt_description ? img?.alt_description : 'img'}
               crossOrigin='anonymous'
             />
             <div className='fullview-content-actions'>
-              <img
-                onClick={!liked ? onLikeImageHandler : onRemoveLikeHandler}
-                className='fullview-content-actions__action'
-                src={!liked ? likeImage : likeImageActive}
-                alt='Like'
-              />
-              <img
-                onClick={onDownloadHandler}
-                className='fullview-content-actions__action'
-                src={downSvg}
-                alt='Download'
-              />
-              <img
-                onClick={
-                  !bookmarked ? onBookmarkImageHandler : onRemoveBookmarkHandler
-                }
-                className='fullview-content-actions__action'
-                src={!bookmarked ? bookmarkImage : bookmarkImageActive}
-                alt='Bookmark'
-              />
+              {!socialsLoading ? (
+                <>
+                  {' '}
+                  <img
+                    onClick={!liked ? onLikeImageHandler : onRemoveLikeHandler}
+                    className='fullview-content-actions__action'
+                    src={!liked ? likeImage : likeImageActive}
+                    alt='Like'
+                  />
+                  <img
+                    onClick={onDownloadHandler}
+                    className='fullview-content-actions__action'
+                    src={downSvg}
+                    alt='Download'
+                  />
+                  <img
+                    onClick={
+                      !bookmarked
+                        ? onBookmarkImageHandler
+                        : onRemoveBookmarkHandler
+                    }
+                    className='fullview-content-actions__action'
+                    src={!bookmarked ? bookmarkImage : bookmarkImageActive}
+                    alt='Bookmark'
+                  />
+                </>
+              ) : (
+                <Loading className='loading-socials' maxWidth='128px' />
+              )}
             </div>
             <span className='fullview-content-divisor' />
           </>

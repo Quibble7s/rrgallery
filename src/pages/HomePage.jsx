@@ -1,19 +1,19 @@
-import React, { memo, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { memo, useState } from 'react';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-import { useGetNewImages } from "../hooks/useGetNewImages";
-import { addUser } from "../helpers/Firebase/database";
+import { useGetNewImages } from '../hooks/useGetNewImages';
+import { addUser } from '../helpers/Firebase/database';
 
-import ImageCard from "../components/Cards/ImageCard";
-import LoadingDotsLine from "../components/Loading/LoadingDotsLine";
-import Pagination from "../components/Pagination/Pagination";
+import ImageCard from '../components/Cards/ImageCard';
+import LoadingDotsLine from '../components/Loading/LoadingDotsLine';
+import Pagination from '../components/Pagination/Pagination';
 
 import {
   NEXT_SECCTION,
   PREVIOUS_SECCTION,
   RANGE,
-} from "../models/constants/pagination";
-import { useEffect } from "react";
+} from '../models/constants/pagination';
 
 const HomePage = () => {
   //Add the user to the database if it doesn't exist

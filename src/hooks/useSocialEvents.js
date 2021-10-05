@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   addBookmarks,
   addLikes,
@@ -7,13 +7,14 @@ import {
   getLikes,
   removeBookmark,
   removeLike,
-} from "../helpers/Firebase/database";
-import { downloadImage } from "../helpers/Unsplash/getimages";
+} from '../helpers/Firebase/database';
+import { downloadImage } from '../helpers/Unsplash/getimages';
 
 export const useSocialEvents = (img) => {
   const { auth } = useSelector((state) => state);
   const [liked, setLiked] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const isLiked = async () => {
@@ -32,37 +33,49 @@ export const useSocialEvents = (img) => {
     };
     isLiked();
     isBookmarked();
-  });
+    return () => {
+      setLiked(false);
+      setBookmarked(false);
+    };
+  }, [auth.uid, img?.id]);
 
   const onDownloadHandler = () => {
     downloadImage(img);
   };
 
-  const onLikeImageHandler = () => {
+  const onLikeImageHandler = async () => {
     if (auth.loged) {
-      addLikes(auth.uid, img?.id);
-      setLiked(true);
+      setLoading(true);
+      await addLikes(auth.uid, img?.id);
+      await setLiked(true);
+      setLoading(false);
     }
   };
 
-  const onBookmarkImageHandler = () => {
+  const onBookmarkImageHandler = async () => {
     if (auth.loged) {
-      addBookmarks(auth.uid, img?.id);
-      setBookmarked(true);
+      setLoading(true);
+      await addBookmarks(auth.uid, img?.id);
+      await setBookmarked(true);
+      setLoading(false);
     }
   };
 
-  const onRemoveLikeHandler = () => {
+  const onRemoveLikeHandler = async () => {
     if (auth.loged) {
-      removeLike(auth.uid, img?.id);
-      setLiked(false);
+      setLoading(true);
+      await removeLike(auth.uid, img?.id);
+      await setLiked(false);
+      setLoading(false);
     }
   };
 
-  const onRemoveBookmarkHandler = () => {
+  const onRemoveBookmarkHandler = async () => {
     if (auth.loged) {
+      setLoading(true);
       removeBookmark(auth.uid, img?.id);
       setBookmarked(false);
+      setLoading(false);
     }
   };
 
@@ -74,5 +87,6 @@ export const useSocialEvents = (img) => {
     onRemoveBookmarkHandler,
     liked,
     bookmarked,
+    loading,
   ];
 };

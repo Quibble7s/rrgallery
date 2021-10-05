@@ -1,9 +1,14 @@
-import React from "react";
+import React from 'react';
+import ProfileHeader from '../components/Profile/ProfileHeader';
+import ProfileSocials from '../components/Profile/ProfileSocials';
+
+import '../sass/pages/profile.scss';
 
 const UserProfile = () => {
   return (
-    <div>
-      <h1>User Profile</h1>
+    <div className='profile'>
+      <ProfileHeader />
+      <ProfileSocials />
     </div>
   );
 };
