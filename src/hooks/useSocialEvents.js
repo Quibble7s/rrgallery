@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+
+import queryString from 'query-string';
+
 import {
   addBookmarks,
   addLikes,
@@ -8,6 +11,7 @@ import {
   removeBookmark,
   removeLike,
 } from '../helpers/Firebase/database';
+
 import { downloadImage } from '../helpers/Unsplash/getimages';
 
 export const useSocialEvents = (img) => {
@@ -19,17 +23,29 @@ export const useSocialEvents = (img) => {
   useEffect(() => {
     const isLiked = async () => {
       const likes = [];
+      const ids = [];
       await getLikes(auth.uid).then((val) => {
         likes.push(...val);
       });
-      setLiked(likes.includes(img?.id));
+      for (let i = 0; i < likes.length; i++) {
+        const like = likes[i];
+        const { id = '' } = queryString.parse(like);
+        ids.push(id);
+      }
+      setLiked(ids.includes(img?.id));
     };
     const isBookmarked = async () => {
       const bookmarks = [];
+      const ids = [];
       await getBookmarks(auth.uid).then((val) => {
         bookmarks.push(...val);
       });
-      setBookmarked(bookmarks.includes(img?.id));
+      for (let i = 0; i < bookmarks.length; i++) {
+        const bookmark = bookmarks[i];
+        const { id = '' } = queryString.parse(bookmark);
+        ids.push(id);
+      }
+      setBookmarked(ids.includes(img?.id));
     };
     isLiked();
     isBookmarked();
@@ -37,7 +53,7 @@ export const useSocialEvents = (img) => {
       setLiked(false);
       setBookmarked(false);
     };
-  }, [auth.uid, img?.id]);
+  }, [auth.uid, img?.urls.raw, img?.id]);
 
   const onDownloadHandler = () => {
     downloadImage(img);
@@ -46,7 +62,7 @@ export const useSocialEvents = (img) => {
   const onLikeImageHandler = async () => {
     if (auth.loged) {
       setLoading(true);
-      await addLikes(auth.uid, img?.id);
+      await addLikes(auth.uid, `${img?.urls.raw}&id=${img?.id}`);
       await setLiked(true);
       setLoading(false);
     }
@@ -55,7 +71,7 @@ export const useSocialEvents = (img) => {
   const onBookmarkImageHandler = async () => {
     if (auth.loged) {
       setLoading(true);
-      await addBookmarks(auth.uid, img?.id);
+      await addBookmarks(auth.uid, `${img?.urls.raw}&id=${img?.id}`);
       await setBookmarked(true);
       setLoading(false);
     }

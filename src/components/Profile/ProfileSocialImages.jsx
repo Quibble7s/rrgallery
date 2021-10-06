@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
+import queryString from 'query-string';
+
 import { getBookmarks, getLikes } from '../../helpers/Firebase/database';
-import { getImage } from '../../helpers/Unsplash/getimages';
 import { section } from '../../models/constants/profileSections';
 
 import Image from '../Cards/Image';
@@ -15,25 +16,21 @@ const ProfileSocialImages = ({ selectedSection }) => {
 
   useEffect(() => {
     const loadLikedImages = async () => {
-      await getLikes(auth.uid).then(async (val) => {
+      await getLikes(auth.uid).then(async (urls) => {
         const imgs = [];
-        for (let i = 0; i < val.length; i++) {
-          const id = val[i];
-          await getImage(id).then((img) => {
-            imgs.push(img);
-          });
+        for (let i = 0; i < urls.length; i++) {
+          const url = urls[i];
+          imgs.push(url);
         }
         setImages(imgs);
       });
     };
     const loadBookmarkedImages = async () => {
-      await getBookmarks(auth.uid).then(async (val) => {
+      await getBookmarks(auth.uid).then(async (urls) => {
         const imgs = [];
-        for (let i = 0; i < val.length; i++) {
-          const id = val[i];
-          await getImage(id).then((img) => {
-            imgs.push(img);
-          });
+        for (let i = 0; i < urls.length; i++) {
+          const url = urls[i];
+          imgs.push(url);
         }
         setImages(imgs);
       });
@@ -47,18 +44,24 @@ const ProfileSocialImages = ({ selectedSection }) => {
       setImages(null);
     };
   }, [auth.uid, selectedSection]);
+
+  const getID = (url = '') => {
+    const { id = '' } = queryString.parse(url);
+    return id;
+  };
+
   return (
     <>
       {images ? (
-        images.map((img) => {
+        images.map((url) => {
           return (
             <Image
-              key={img.id}
+              key={url}
               className='profile-socials-container__img'
               onLoadClassName='profile-socials-container__img--loaded'
-              src={`${img.urls.raw}&w=512&ar=3:4&fit=crop`}
-              alt={img.id}
-              id={img.id}
+              src={`${url}&w=512&ar=3:4&fit=crop`}
+              alt='512'
+              id={getID(url)}
             />
           );
         })

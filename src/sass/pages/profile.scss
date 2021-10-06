@@ -26,9 +26,10 @@
     align-items: center;
     &-wrapper {
       width: 100%;
-      border: 1px solid rgba($color: $gray-light, $alpha: 0.5);
+      @include shadow();
       padding-bottom: $padding-large;
       min-height: 80vh;
+      border-radius: 8px;
     }
     &-selectors {
       width: 100%;
@@ -45,6 +46,9 @@
         padding: $padding-small;
         background-color: $gray-extra-light;
         transition: background-color 200ms ease-in-out;
+        &--active {
+          background-color: darken($color: $gray-extra-light, $amount: 10);
+        }
         &:hover {
           cursor: pointer;
           background-color: lighten($color: $gray-extra-light, $amount: 3);

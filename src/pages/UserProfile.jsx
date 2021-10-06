@@ -7,7 +7,6 @@ import '../sass/pages/profile.scss';
 const UserProfile = () => {
   return (
     <div className='profile'>
-      <ProfileHeader />
       <ProfileSocials />
     </div>
   );

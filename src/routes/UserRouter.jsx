@@ -6,6 +6,7 @@ import UserProfile from '../pages/UserProfile';
 
 import UnderConstruction from '../pages/UnderConstruction';
 import Navbar from '../components/Navbar/Navbar';
+import UserConfig from '../pages/UserConfig';
 
 const UserRouter = () => {
   return (

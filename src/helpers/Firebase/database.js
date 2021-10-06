@@ -4,7 +4,9 @@ import {
   setDoc,
   updateDoc,
   getDoc,
-} from "firebase/firestore";
+} from 'firebase/firestore';
+
+import queryString from 'query-string';
 
 const firestoreDb = getFirestore();
 
@@ -15,8 +17,8 @@ export const addUser = async (uid) => {
       likes: [],
       bookmarks: [],
       configuration: {
-        preferences: ["1024px", "512px"],
-        visibility: ["N", "N", "N"],
+        preferences: ['1024px', '512px'],
+        visibility: ['N', 'N', 'N'],
       },
     });
   }
@@ -47,22 +49,25 @@ export const getBookmarks = async (uid) => {
   return data ? [...data] : [];
 };
 
-export const addLikes = async (uid, id) => {
+export const addLikes = async (uid, url) => {
   const prevLikes = [];
   await getLikes(uid).then((val) => {
     prevLikes.push(...val);
   });
-  if (!prevLikes.includes(id)) {
+  if (!prevLikes.includes(url)) {
     await updateDoc(doc(firestoreDb, `users/${uid}`), {
-      likes: [...prevLikes, id],
+      likes: [...prevLikes, url],
     });
   }
 };
 
-export const removeLike = async (uid, id) => {
+export const removeLike = async (uid, imgID) => {
   const updatedLikes = [];
   await getLikes(uid).then((val) => {
-    const update = val.filter((item) => item !== id);
+    const update = val.filter((item) => {
+      const { id = '' } = queryString.parse(item);
+      return id !== imgID;
+    });
     updatedLikes.push(...update);
   });
   await updateDoc(doc(firestoreDb, `users/${uid}`), {
@@ -70,22 +75,25 @@ export const removeLike = async (uid, id) => {
   });
 };
 
-export const addBookmarks = async (uid, id) => {
+export const addBookmarks = async (uid, url) => {
   const prevBookmarks = [];
   await getBookmarks(uid).then((val) => {
     prevBookmarks.push(...val);
   });
-  if (!prevBookmarks.includes(id)) {
+  if (!prevBookmarks.includes(url)) {
     await updateDoc(doc(firestoreDb, `users/${uid}`), {
-      bookmarks: [...prevBookmarks, id],
+      bookmarks: [...prevBookmarks, url],
     });
   }
 };
 
-export const removeBookmark = async (uid, id) => {
+export const removeBookmark = async (uid, imgID) => {
   const updatedBookmarks = [];
   await getBookmarks(uid).then((val) => {
-    const update = val.filter((item) => item !== id);
+    const update = val.filter((item) => {
+      const { id = '' } = queryString.parse(item);
+      return id !== imgID;
+    });
     updatedBookmarks.push(...update);
   });
   await updateDoc(doc(firestoreDb, `users/${uid}`), {

@@ -1,15 +1,15 @@
-import React from "react";
-import { useCallback } from "react";
-import { v4 as uuidv4 } from "uuid";
+import React from 'react';
+import { useCallback } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-import PaginationButton from "../Buttons/PaginationButton";
+import PaginationButton from '../Buttons/PaginationButton';
 
 import {
   NEXT_SECCTION,
   PREVIOUS_SECCTION,
-} from "../../models/constants/pagination";
+} from '../../models/constants/pagination';
 
-import "../../sass/components/Input/pagination.scss";
+import '../../sass/components/Input/pagination.scss';
 
 const Pagination = ({
   currentPage,
