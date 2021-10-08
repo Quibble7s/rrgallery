@@ -74,7 +74,11 @@ const Pagination = ({
         );
       }
     } else {
-      for (let i = totalPages - (range - 1); i < totalPages + 1; i++) {
+      for (
+        let i = totalPages > range ? totalPages - (range - 1) : 1;
+        i < totalPages + 1;
+        i++
+      ) {
         buttons.push(
           <PaginationButton
             key={uuidv4()}

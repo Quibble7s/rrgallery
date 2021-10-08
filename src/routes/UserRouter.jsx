@@ -14,7 +14,7 @@ const UserRouter = () => {
       <Navbar />
       <Switch>
         <Route exact path='/user/profile' component={UserProfile} />
-        <Route exact path='/user/configuration' component={UnderConstruction} />
+        <Route exact path='/user/configuration' component={UserConfig} />
         <Redirect to='/' />
       </Switch>
       <Footer />

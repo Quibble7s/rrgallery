@@ -1,24 +1,24 @@
-import React, { memo, useState } from "react";
-import queryString from "query-string";
-import { useLocation } from "react-router-dom";
+import React, { memo, useState } from 'react';
+import queryString from 'query-string';
+import { useLocation } from 'react-router-dom';
 
-import LoadingDotsLine from "../components/Loading/LoadingDotsLine";
-import ImageCard from "../components/Cards/ImageCard";
+import LoadingDotsLine from '../components/Loading/LoadingDotsLine';
+import ImageCard from '../components/Cards/ImageCard';
 
-import { useSearchNewImages } from "../hooks/useSearchImages";
+import { useSearchNewImages } from '../hooks/useSearchImages';
 import {
   NEXT_SECCTION,
   PREVIOUS_SECCTION,
   RANGE,
-} from "../models/constants/pagination";
-import Pagination from "../components/Pagination/Pagination";
-import { useMemo } from "react";
-import { useEffect } from "react";
+} from '../models/constants/pagination';
+import Pagination from '../components/Pagination/Pagination';
+import { useMemo } from 'react';
+import { useEffect } from 'react';
 
 const SearchPage = ({ history }) => {
   //Getting the parameters of the query
   const location = useLocation();
-  const { q = "", p = "" } = queryString.parse(location.search);
+  const { q = '', p = '' } = queryString.parse(location.search);
 
   //Images
   const [images, pages] = useSearchNewImages(q, p);
@@ -33,8 +33,8 @@ const SearchPage = ({ history }) => {
   }, [currentPage]);
 
   //Calculating the end page and the start page of the secction
-  const endP = currentSection * RANGE;
-  const startP = endP - (RANGE - 1);
+  const endP = pages > RANGE ? currentSection * RANGE : pages;
+  const startP = pages > RANGE ? endP - (RANGE - 1) : 1;
 
   //Setting the start page and the end page
   useEffect(() => {

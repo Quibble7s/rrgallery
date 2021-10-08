@@ -46,12 +46,16 @@
         padding: $padding-small;
         background-color: $gray-extra-light;
         transition: background-color 200ms ease-in-out;
-        &--active {
-          background-color: darken($color: $gray-extra-light, $amount: 10);
-        }
         &:hover {
           cursor: pointer;
           background-color: lighten($color: $gray-extra-light, $amount: 3);
+        }
+        &--active {
+          background-color: darken($color: $gray-extra-light, $amount: 10);
+          &:hover {
+            cursor: not-allowed;
+            background-color: darken($color: $gray-extra-light, $amount: 8);
+          }
         }
       }
     }
