@@ -11,15 +11,15 @@ import bookmarkImage from '../../assets/img/bookmark.svg';
 import likeImage from '../../assets/img/heart.svg';
 import bookmarkImageActive from '../../assets/img/bookmark-active.svg';
 import likeImageActive from '../../assets/img/heart-active.svg';
-import placeholder from '../../assets/img/placeholder.jpg';
 
 import '../../sass/components/Cards/card.scss';
 import Loading from '../Loading/Loading';
+import { useGetPreferences } from '../../hooks/useGetPreferences';
 
 const ImageCard = ({ img = {} }) => {
   const history = useHistory();
   const [loading, setLoading] = useState(true);
-
+  const [userPreferences] = useGetPreferences();
   const [
     onDownloadHandler,
     onLikeImageHandler,
@@ -46,7 +46,6 @@ const ImageCard = ({ img = {} }) => {
         {loading ? (
           <div className='card-img-overlay card-img-overlay--loading'>
             <LoadingDotsCircle />
-            <img className='card__img' src={placeholder} alt='placeholder' />
           </div>
         ) : (
           <div className='card-img-overlay' onClick={onViewFullHandler}></div>
@@ -54,7 +53,7 @@ const ImageCard = ({ img = {} }) => {
         <img
           onLoad={onLoadHandler}
           className='card__img'
-          src={`${img.urls.raw}&w=512&ar=3:4&fit=crop`}
+          src={`${img.urls.raw}&w=${userPreferences[1]}&ar=3:4&fit=crop`}
           alt={img.alt_description ? img.alt_description : 'img'}
           crossOrigin='anonymous'
         />

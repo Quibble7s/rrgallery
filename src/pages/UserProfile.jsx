@@ -5,7 +5,7 @@ import '../sass/pages/profile.scss';
 
 const UserProfile = () => {
   return (
-    <div className='profile'>
+    <div className='profile --mt-large --mb-large'>
       <ProfileSocials />
     </div>
   );

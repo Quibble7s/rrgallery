@@ -26,8 +26,7 @@
     &-img {
       width: 100%;
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 0.5em;
@@ -77,12 +76,27 @@
     flex-direction: column;
     justify-content: flex-start;
     padding: $padding-regular;
+    &-selection {
+      width: 50%;
+      border-radius: 4;
+      border: none;
+      background-color: $gray-extra-light;
+      color: $gray;
+      padding: $padding-small;
+    }
+    &-save {
+      width: 50%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 
 @media (min-width: 900px) {
   .config {
-    width: 75%;
+    width: 60%;
     flex: 0 0 auto;
   }
 }

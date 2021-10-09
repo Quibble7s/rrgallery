@@ -14,6 +14,8 @@ import cancelImage from '../../assets/img/cancel.svg';
 import '../../helpers/Firebase/storage';
 import Loading from '../Loading/Loading';
 import { updateProfilePicture } from '../../helpers/Firebase/storage';
+import { getUser, updateProfileConfig } from '../../helpers/Firebase/database';
+import { useEffect } from 'react';
 
 const Config = () => {
   const { auth } = useSelector((state) => state);
@@ -25,6 +27,19 @@ const Config = () => {
   const [[imageBuffer, extension], setImage] = useState([null, null]);
   const [editMode, setEditMode] = useState(false);
   const [profileUpdating, setProfileUpdating] = useState(false);
+  const [userPreferences, setUserPreferences] = useState(['1024', '512']);
+  const [updatingPreferences, setUpdatingPreferences] = useState(false);
+
+  useEffect(() => {
+    const GetUser = async () => {
+      setUpdatingPreferences(true);
+      await getUser(auth.uid).then(async (data) => {
+        await setUserPreferences(data.configuration.preferences);
+      });
+      setUpdatingPreferences(false);
+    };
+    GetUser();
+  }, [auth.uid]);
 
   const onFileSelectedHandler = (e) => {
     const file = e.target.files[0];
@@ -46,7 +61,6 @@ const Config = () => {
     if (imageBuffer) {
       await updateProfilePicture(imageBuffer, extension, auth.uid).then(
         async (url) => {
-          console.log(url);
           await dispatch(updateUserProfile(inputData.name, url));
         },
       );
@@ -57,8 +71,17 @@ const Config = () => {
     setEditMode(false);
   };
 
-  const onUpdateConfiguration = (e) => {
+  const onUpdateConfiguration = async (e) => {
     e.preventDefault();
+    setUpdatingPreferences(true);
+    const fullQ = document.querySelector('#fullviewquality');
+    const cardQ = document.querySelector('#cardquality');
+    await updateProfileConfig(auth.uid, {
+      configuration: {
+        preferences: [fullQ.value, cardQ.value],
+      },
+    });
+    setUpdatingPreferences(false);
   };
 
   const enterEditModeHandler = () => {
@@ -160,26 +183,48 @@ const Config = () => {
           className='text text--color-gray text--size-regular --mt-regular'>
           Full view image quality
         </label>
-        <select id='fullviewquality' className='--mt-small'>
-          <option value='2048px'>2048 Pixels</option>
-          <option value='1024px'>1024 Pixels (default)</option>
-          <option value='512px'>512 Pixels</option>
+        <select
+          id='fullviewquality'
+          className='config-preferences-selection --mt-small'>
+          <option value='2048' selected={userPreferences[0] === '2048'}>
+            2048 Pixels
+          </option>
+          <option value='1024' selected={userPreferences[0] === '1024'}>
+            1024 Pixels
+          </option>
+          <option value='512' selected={userPreferences[0] === '512'}>
+            512 Pixels
+          </option>
         </select>
         <label
           htmlFor='cardquality'
           className='text text--color-gray text--size-regular --mt-regular'>
           Card image quality
         </label>
-        <select id='cardquality' className='--mt-small'>
-          <option value='2048px'>1024 Pixels</option>
-          <option value='1024px'>512 Pixels (default)</option>
-          <option value='512px'>256 Pixels</option>
+        <select
+          id='cardquality'
+          className='config-preferences-selection --mt-small'>
+          <option value='1024' selected={userPreferences[1] === '1024'}>
+            1024 Pixels
+          </option>
+          <option value='512' selected={userPreferences[1] === '512'}>
+            512 Pixels
+          </option>
+          <option value='256' selected={userPreferences[1] === '256'}>
+            256 Pixels
+          </option>
         </select>
-        <Button
-          type='submit'
-          value='Save'
-          className='btn btn--radius-4 btn--primary --mt-regular'
-        />
+        <div className='config-preferences-save'>
+          {updatingPreferences ? (
+            <Loading className='config-profile__btn-img' maxWidth='64px' />
+          ) : (
+            <Button
+              type='submit'
+              value='Save'
+              className='btn btn--radius-4 btn--primary --mt-regular'
+            />
+          )}
+        </div>
       </form>
     </div>
   );

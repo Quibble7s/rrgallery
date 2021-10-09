@@ -52,8 +52,7 @@
 @media (min-width: 900px) {
   .fullview {
     &-content {
-      width: 75%;
-      max-width: 900px;
+      width: 60%;
       padding: $padding-regular;
       @include shadow();
       border-radius: 8px;

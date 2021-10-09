@@ -17,7 +17,7 @@ export const addUser = async (uid) => {
       likes: [],
       bookmarks: [],
       configuration: {
-        preferences: ['1024px', '512px'],
+        preferences: ['1024', '512'],
         visibility: ['N', 'N', 'N'],
       },
     });
@@ -99,4 +99,10 @@ export const removeBookmark = async (uid, imgID) => {
   await updateDoc(doc(firestoreDb, `users/${uid}`), {
     bookmarks: [...updatedBookmarks],
   });
+};
+
+export const updateProfileConfig = async (uid, configuration = null) => {
+  if (configuration) {
+    await updateDoc(doc(firestoreDb, `users/${uid}`), configuration);
+  }
 };

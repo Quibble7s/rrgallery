@@ -20,7 +20,6 @@
   &-socials {
     width: 100%;
     min-height: 90vh;
-    padding: $padding-large;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -85,7 +84,7 @@
   .profile {
     &-socials {
       &-wrapper {
-        width: 75%;
+        width: 60%;
       }
       &-container {
         &__img {
