@@ -36,7 +36,7 @@ const FullView = () => {
   };
   return (
     <div className='container --center-horizontal'>
-      <div className='fullview-content --mb-regular --mt-regular'>
+      <div className='fullview-content --mb-large --mt-large'>
         {!img ? (
           <LoadingDotsLine />
         ) : (

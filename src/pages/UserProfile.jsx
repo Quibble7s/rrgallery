@@ -1,5 +1,4 @@
 import React from 'react';
-import ProfileHeader from '../components/Profile/ProfileHeader';
 import ProfileSocials from '../components/Profile/ProfileSocials';
 
 import '../sass/pages/profile.scss';

@@ -5,15 +5,14 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   signOut,
-} from "firebase/auth";
-import { GoogleAuthProvider } from "@firebase/auth";
+} from 'firebase/auth';
+import { GoogleAuthProvider } from '@firebase/auth';
 
-import { app } from "../Firebase/firebase-config";
-import { authTypes } from "../Types/authTypes";
+import { app } from '../Firebase/firebase-config';
+import { authTypes } from '../Types/authTypes';
 
 const auth = getAuth(app);
-auth.languageCode = "it";
-
+auth.languageCode = 'it';
 const googleProvider = new GoogleAuthProvider();
 
 export const Login = (uid, displayName, mail, photoURL) => {
@@ -63,11 +62,31 @@ export const SignInWithGoogle = () => {
 };
 
 export const Register = (email, password, displayName) => {
-  return (dispatch) => {
-    createUserWithEmailAndPassword(auth, email, password)
+  return async (dispatch) => {
+    await createUserWithEmailAndPassword(auth, email, password)
       .then(async ({ user }) => {
         await updateProfile(user, { displayName: displayName, photoURL: null });
         dispatch(Login(user.uid, user.displayName, user.email, user.photoURL));
+      })
+      .catch(() => {});
+  };
+};
+
+export const updateUserProfile = (
+  displayName = auth.currentUser.displayName,
+  photoURL = auth.currentUser.photoURL,
+) => {
+  return async (dispatch) => {
+    await updateProfile(auth.currentUser, {
+      displayName: displayName,
+      photoURL: photoURL,
+    })
+      .then(() => {
+        const name = auth.currentUser.displayName;
+        const photo = auth.currentUser.photoURL;
+        dispatch(
+          Login(auth.currentUser.uid, name, auth.currentUser.email, photo),
+        );
       })
       .catch(() => {});
   };

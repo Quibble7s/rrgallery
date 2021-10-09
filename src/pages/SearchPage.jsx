@@ -60,6 +60,7 @@ const SearchPage = ({ history }) => {
       }
     }
     setCurrentPage(selectedPage);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     history.push(`/search?q=${q}&p=${selectedPage}`);
   };
 

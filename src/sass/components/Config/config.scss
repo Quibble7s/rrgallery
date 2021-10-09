@@ -2,7 +2,20 @@
 
 .config {
   width: 100%;
+  @include shadow();
+  border-radius: 8px;
+  flex: 1 1 auto;
   margin-block: $margin-large;
+  &-separator {
+    width: 95%;
+    height: 1px;
+    background-color: $gray-extra-light;
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-block: $margin-large;
+  }
   &-profile {
     width: 100%;
     display: flex;
@@ -10,6 +23,29 @@
     justify-content: center;
     align-items: center;
     padding: $padding-regular;
+    &-img {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5em;
+      &-input {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    &-username {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5em;
+    }
     &__img {
       width: 100%;
       min-height: 64px;
@@ -19,18 +55,34 @@
       border-radius: 50%;
       border: 1px solid $gray-extra-light;
     }
+    &__input {
+      max-width: 250px;
+    }
     &__btn {
-      min-width: 24px;
-      min-height: 24px;
-      max-width: 24px;
-      max-height: 24px;
+      max-width: 16px;
+      max-height: 16px;
       background-color: transparent;
       border: none;
       outline: none;
-
+      &:hover {
+        cursor: pointer;
+      }
       &-img {
         width: 100%;
       }
     }
+  }
+  &-preferences {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: $padding-regular;
+  }
+}
+
+@media (min-width: 900px) {
+  .config {
+    width: 75%;
+    flex: 0 0 auto;
   }
 }

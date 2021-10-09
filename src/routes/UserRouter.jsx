@@ -4,7 +4,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
 import UserProfile from '../pages/UserProfile';
 
-import UnderConstruction from '../pages/UnderConstruction';
+//import UnderConstruction from '../pages/UnderConstruction';
 import Navbar from '../components/Navbar/Navbar';
 import UserConfig from '../pages/UserConfig';
 
