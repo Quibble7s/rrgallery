@@ -56,7 +56,7 @@ export const useSocialEvents = (img) => {
       setLiked(false);
       setBookmarked(false);
     };
-  }, [auth.uid, img?.urls.raw, img?.id]);
+  }, [auth.uid, auth.loged, img?.urls.raw, img?.id]);
 
   const onDownloadHandler = () => {
     downloadImage(img);

@@ -14,6 +14,7 @@ import {
 import Pagination from '../components/Pagination/Pagination';
 import { useMemo } from 'react';
 import { useEffect } from 'react';
+import NoResultsFound from '../components/Search/NoResultsFound';
 
 const SearchPage = ({ history }) => {
   //Getting the parameters of the query
@@ -24,8 +25,7 @@ const SearchPage = ({ history }) => {
   const [images, pages] = useSearchNewImages(q, p);
   //Pagination stuff
   const [currentPage, setCurrentPage] = useState(parseInt(p));
-  const [startPage, setStartPage] = useState(1);
-  const [endPage, setEndPage] = useState(RANGE);
+  const [[startPage, endPage], setPages] = useState([1, RANGE]);
 
   //Calculating in what secction of the pagination we are depending on the currentPage
   const currentSection = useMemo(() => {
@@ -38,8 +38,7 @@ const SearchPage = ({ history }) => {
 
   //Setting the start page and the end page
   useEffect(() => {
-    setStartPage(startP);
-    setEndPage(endP);
+    setPages([startP, endP]);
   }, [currentSection, pages, endP, startP]);
 
   const onPageChangeHandler = (e) => {
@@ -68,12 +67,13 @@ const SearchPage = ({ history }) => {
     <>
       <div className='container --w-100 --center'>
         <div className='container --w-75 --gap-2 --center-row --padding-regular --warp --mt-large'>
+          {images?.length < 1 && <NoResultsFound />}
           {!images ? (
             <LoadingDotsLine />
           ) : (
             images?.map((img) => <ImageCard key={img.id} img={img} />)
           )}
-          {images && pages && (
+          {images && pages > 0 && (
             <Pagination
               currentPage={currentPage}
               startPage={startPage}

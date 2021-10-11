@@ -37,6 +37,14 @@
       background-color: lighten($color: $primary, $amount: 10);
     }
   }
+  &--primary-light {
+    color: $white;
+    background-color: $primary-light;
+    transition: background-color 200ms ease-in-out;
+    &:hover {
+      background-color: lighten($color: $primary-light, $amount: 10);
+    }
+  }
   &--black {
     color: $white;
     background-color: $black;
@@ -57,6 +65,15 @@
     color: $white;
     background-color: $gray-light;
     transition: background-color 200ms ease-in-out;
+    &:hover {
+      background-color: lighten($color: $gray-light, $amount: 10);
+    }
+  }
+  &--white {
+    color: $black;
+    background-color: $white;
+    transition: background-color 200ms ease-in-out;
+    @include shadow();
     &:hover {
       background-color: lighten($color: $gray-light, $amount: 10);
     }

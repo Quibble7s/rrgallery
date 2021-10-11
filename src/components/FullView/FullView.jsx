@@ -3,7 +3,6 @@ import React, { memo } from 'react';
 import { useSocialEvents } from '../../hooks/useSocialEvents';
 import { useGetImageWithLocation } from '../../hooks/useGetImageWithLocation';
 
-import LoadingDotsCircle from '../Loading/LoadingDotsCircle';
 import LoadingDotsLine from '../Loading/LoadingDotsLine';
 
 import downSvg from '../../assets/img/download.svg';
