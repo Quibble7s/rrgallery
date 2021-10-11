@@ -40,13 +40,19 @@ export const Logout = () => {
   };
 };
 
-export const SignInWithEmailAndPassword = (email, password) => {
+export const SignInWithEmailAndPassword = (
+  email,
+  password,
+  onErrorCallback = (error) => null,
+) => {
   return (dispatch) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(async ({ user }) => {
         dispatch(Login(user.uid, user.displayName, user.email, user.photoURL));
       })
-      .catch(() => {});
+      .catch((err) => {
+        onErrorCallback(err);
+      });
   };
 };
 

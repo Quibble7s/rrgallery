@@ -88,6 +88,9 @@
     &-light-gray {
       color: $gray-light;
     }
+    &-error {
+      color: $red;
+    }
   }
 
   &--overflow {

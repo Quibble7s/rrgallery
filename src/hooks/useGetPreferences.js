@@ -12,8 +12,8 @@ export const useGetPreferences = () => {
         setPreferencesLoading(true);
         await getUser(auth.uid).then(async (data) => {
           setUserPreferences([
-            data.configuration.preferences[0],
-            data.configuration.preferences[1],
+            data?.configuration.preferences[0],
+            data?.configuration.preferences[1],
           ]);
         });
         setPreferencesLoading(false);

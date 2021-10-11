@@ -1,9 +1,20 @@
 @use '../../abstract/index' as *;
 
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-color: $black $gray-extra-light;
+  scrollbar-width: thin;
 }
 
 body,
@@ -22,6 +33,27 @@ body {
 
 ::placeholder {
   color: $gray;
+}
+
+//Scrollbar stuff
+//width
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $gray-extra-light;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $black;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: lighten($color: $black, $amount: 10);
 }
 
 .container {
@@ -198,6 +230,17 @@ body {
   &--top {
     @include background-top();
   }
+}
+
+.--fade-in {
+  animation: fadein 200ms forwards ease-in-out;
+}
+
+.--loading-circle {
+  width: 100%;
+  max-width: 64px;
+  max-height: 64px;
+  text-align: center;
 }
 
 @media (min-width: 900px) {

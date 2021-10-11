@@ -18,22 +18,38 @@ import backgroundBottom from '../assets/img/background/background-bottom.svg';
 import '../sass/pages/login.scss';
 import '../sass/components/Input/input.scss';
 import '../sass/text.scss';
+import Loading from '../components/Loading/Loading';
 
 const AuthLogin = () => {
   const dispatch = useDispatch();
+  const [[errorMessage, displayError], setError] = useState(['', false]);
   const [data, setData] = useState({
     email: '',
     password: '',
   });
-  const onLoginHandler = (e) => {
+  const onLoginHandler = async (e) => {
     e.preventDefault();
-    dispatch(SignInWithEmailAndPassword(data.email, data.password));
+    await dispatch(
+      SignInWithEmailAndPassword(
+        data.email,
+        data.password,
+        onLoginErrorHandler,
+      ),
+    );
   };
   const onChangeHandler = (e) => {
     setData({
       ...data,
       [e.target.name]: e.target.value.trim(),
     });
+  };
+
+  const onLoginErrorHandler = (err) => {
+    if (err.code === 'auth/wrong-password') {
+      setError(['Incorrect password', true]);
+    } else if (err.code === 'auth/user-not-found') {
+      setError(['Username / Email not found', true]);
+    }
   };
 
   const [onFocus, onBlur] = useOnElementActive('input--active');
@@ -57,6 +73,7 @@ const AuthLogin = () => {
             id='email'
             value={data.email}
             onChange={onChangeHandler}
+            required
           />
           <input
             onFocus={onFocus}
@@ -68,7 +85,13 @@ const AuthLogin = () => {
             id='password'
             value={data.password}
             onChange={onChangeHandler}
+            required
           />
+          {displayError && (
+            <p className='text text--size-small text--center text--color-error --fade-in'>
+              {errorMessage}
+            </p>
+          )}
           <Button
             className='text--size-small --mt-large --w-50 btn--radius-4 btn btn--primary'
             value='Log in'

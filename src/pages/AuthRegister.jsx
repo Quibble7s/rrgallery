@@ -12,8 +12,10 @@ import backgroundBottom from '../assets/img/background/background-bottom.svg';
 
 import '../sass/components/Input/input.scss';
 import '../sass/pages/register.scss';
+import { useState } from 'react';
 
 const AuthRegister = () => {
+  const [[errorMessage, displayError], setError] = useState(['', false]);
   const [data, onChangeHandler] = useOnChange({
     username: '',
     email: '',
@@ -21,18 +23,23 @@ const AuthRegister = () => {
     password: '',
     confirmpassword: '',
   });
+
   const dispatch = useDispatch();
+
   const onRegisterHandler = (e) => {
     e.preventDefault();
-    if (
-      data.email !== data.confirmemail ||
-      data.password !== data.confirmpassword ||
-      data.password.lenght < 8
-    ) {
+    if (data.email !== data.confirmemail) {
+      setError(['Emails must match.', true]);
+      return;
+    } else if (data.password !== data.confirmpassword) {
+      setError(['Passwords must match.', true]);
+    } else if (data.password.length < 8) {
+      setError(['Password must be 8 characters long or more.', true]);
       return;
     }
     dispatch(Register(data.email, data.password, data.username));
   };
+
   const [onFocus, onBlur] = useOnElementActive('input--active');
   return (
     <>
@@ -107,6 +114,11 @@ const AuthRegister = () => {
             value={data.confirmpassword}
             autoComplete='off'
           />
+          {displayError && (
+            <p className='text text--center text--color-error text--size-small'>
+              {errorMessage}
+            </p>
+          )}
           <Button
             className='btn text--size-small btn--primary --mt-large --w-50 btn--radius-4'
             value='Register'
