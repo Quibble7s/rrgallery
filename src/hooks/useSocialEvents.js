@@ -19,36 +19,39 @@ export const useSocialEvents = (img) => {
   const [liked, setLiked] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [displayPopup, setDisplayPopup] = useState(false);
 
   useEffect(() => {
-    const isLiked = async () => {
-      const likes = [];
-      const ids = [];
-      await getLikes(auth.uid).then((val) => {
-        likes.push(...val);
-      });
-      for (let i = 0; i < likes.length; i++) {
-        const like = likes[i];
-        const { id = '' } = queryString.parse(like);
-        ids.push(id);
-      }
-      setLiked(ids.includes(img?.id));
-    };
-    const isBookmarked = async () => {
-      const bookmarks = [];
-      const ids = [];
-      await getBookmarks(auth.uid).then((val) => {
-        bookmarks.push(...val);
-      });
-      for (let i = 0; i < bookmarks.length; i++) {
-        const bookmark = bookmarks[i];
-        const { id = '' } = queryString.parse(bookmark);
-        ids.push(id);
-      }
-      setBookmarked(ids.includes(img?.id));
-    };
-    isLiked();
-    isBookmarked();
+    if (auth.loged) {
+      const isLiked = async () => {
+        const likes = [];
+        const ids = [];
+        await getLikes(auth.uid).then((val) => {
+          likes.push(...val);
+        });
+        for (let i = 0; i < likes.length; i++) {
+          const like = likes[i];
+          const { id = '' } = queryString.parse(like);
+          ids.push(id);
+        }
+        setLiked(ids.includes(img?.id));
+      };
+      const isBookmarked = async () => {
+        const bookmarks = [];
+        const ids = [];
+        await getBookmarks(auth.uid).then((val) => {
+          bookmarks.push(...val);
+        });
+        for (let i = 0; i < bookmarks.length; i++) {
+          const bookmark = bookmarks[i];
+          const { id = '' } = queryString.parse(bookmark);
+          ids.push(id);
+        }
+        setBookmarked(ids.includes(img?.id));
+      };
+      isLiked();
+      isBookmarked();
+    }
     return () => {
       setLiked(false);
       setBookmarked(false);
@@ -65,6 +68,8 @@ export const useSocialEvents = (img) => {
       await addLikes(auth.uid, `${img?.urls.raw}&id=${img?.id}`);
       await setLiked(true);
       setLoading(false);
+    } else {
+      setDisplayPopup(true);
     }
   };
 
@@ -74,6 +79,8 @@ export const useSocialEvents = (img) => {
       await addBookmarks(auth.uid, `${img?.urls.raw}&id=${img?.id}`);
       await setBookmarked(true);
       setLoading(false);
+    } else {
+      setDisplayPopup(true);
     }
   };
 
@@ -83,6 +90,8 @@ export const useSocialEvents = (img) => {
       await removeLike(auth.uid, img?.id);
       await setLiked(false);
       setLoading(false);
+    } else {
+      setDisplayPopup(true);
     }
   };
 
@@ -92,6 +101,8 @@ export const useSocialEvents = (img) => {
       removeBookmark(auth.uid, img?.id);
       setBookmarked(false);
       setLoading(false);
+    } else {
+      setDisplayPopup(true);
     }
   };
 
@@ -104,5 +115,7 @@ export const useSocialEvents = (img) => {
     liked,
     bookmarked,
     loading,
+    displayPopup,
+    setDisplayPopup,
   ];
 };

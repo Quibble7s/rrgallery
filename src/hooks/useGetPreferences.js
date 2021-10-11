@@ -7,18 +7,20 @@ export const useGetPreferences = () => {
   const [userPreferences, setUserPreferences] = useState([]);
   const [preferencesLoading, setPreferencesLoading] = useState(false);
   useEffect(() => {
-    const GetUser = async () => {
-      setPreferencesLoading(true);
-      await getUser(auth.uid).then(async (data) => {
-        setUserPreferences([
-          data.configuration.preferences[0],
-          data.configuration.preferences[1],
-        ]);
-      });
-      setPreferencesLoading(false);
-    };
-    GetUser();
-  }, [auth.uid]);
+    if (auth.loged) {
+      const GetUser = async () => {
+        setPreferencesLoading(true);
+        await getUser(auth.uid).then(async (data) => {
+          setUserPreferences([
+            data.configuration.preferences[0],
+            data.configuration.preferences[1],
+          ]);
+        });
+        setPreferencesLoading(false);
+      };
+      GetUser();
+    }
+  }, [auth.uid, auth.loged]);
 
   return [userPreferences, preferencesLoading];
 };

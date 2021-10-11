@@ -1,0 +1,69 @@
+@use '../../abstract/index' as *;
+
+@keyframes active {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.popup {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: $black, $alpha: 0.8);
+  z-index: 10;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &-login {
+    background-color: $white;
+    width: 50%;
+    z-index: 11;
+    border-radius: 8px;
+    padding: $padding-regular;
+    &-top {
+      text-align: right;
+      margin-bottom: 1.5em;
+    }
+    &-content {
+      &__buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 0.5em;
+        &-button {
+          min-width: 49.5%;
+        }
+      }
+    }
+  }
+  &--active {
+    display: flex;
+    animation: active 200ms forwards ease-in-out;
+  }
+  &--disabled {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .popup {
+    &-login {
+      &-content {
+        &__buttons {
+          &-button {
+            min-width: 25%;
+          }
+        }
+      }
+    }
+  }
+}

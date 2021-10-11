@@ -52,6 +52,6 @@
 }
 
 @mixin shadow {
-  box-shadow: 1px 1px 12px 1px lighten($color: $gray-extra-light, $amount: 2.5),
-    -1px -1px 12px 1px lighten($color: $gray-extra-light, $amount: 2.5);
+  box-shadow: 1px 1px 12px 1px lighten($color: $gray-extra-light, $amount: 4),
+    -1px -1px 12px 1px lighten($color: $gray-extra-light, $amount: 4);
 }

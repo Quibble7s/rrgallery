@@ -25,6 +25,7 @@
   border: 1px solid lighten($color: $gray-extra-light, $amount: 3.5);
   position: relative;
   animation: slide-in forwards 200ms ease-in-out;
+  background-color: $white;
 }
 
 @media (min-width: 900px) {
