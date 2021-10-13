@@ -31,7 +31,16 @@
     opacity: 0;
     z-index: 1;
     transition: opacity 200ms ease-in-out;
+    &__img {
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
     &--loading {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       background: transparent;
       opacity: 1;
     }

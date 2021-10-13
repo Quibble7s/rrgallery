@@ -1,10 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { useSocialEvents } from '../../hooks/useSocialEvents';
+import { useGetPreferences } from '../../hooks/useGetPreferences';
 
-import LoadingDotsCircle from '../Loading/LoadingDotsCircle';
+import Loading from '../Loading/Loading';
+import LoginPopup from '../Popups/LoginPopup';
 
 import downSvg from '../../assets/img/download.svg';
 import bookmarkImage from '../../assets/img/bookmark.svg';
@@ -13,10 +16,6 @@ import bookmarkImageActive from '../../assets/img/bookmark-active.svg';
 import likeImageActive from '../../assets/img/heart-active.svg';
 
 import '../../sass/components/Cards/card.scss';
-import Loading from '../Loading/Loading';
-import { useGetPreferences } from '../../hooks/useGetPreferences';
-import { useSelector } from 'react-redux';
-import LoginPopup from '../Popups/LoginPopup';
 
 const ImageCard = ({ img = {} }) => {
   const history = useHistory();
@@ -52,7 +51,7 @@ const ImageCard = ({ img = {} }) => {
         <div className='card-img-wrapper'>
           {loading ? (
             <div className='card-img-overlay card-img-overlay--loading'>
-              <LoadingDotsCircle />
+              <Loading maxWidth='128px' />
             </div>
           ) : (
             <div className='card-img-overlay' onClick={onViewFullHandler}></div>
