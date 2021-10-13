@@ -15,6 +15,7 @@ import Pagination from '../components/Pagination/Pagination';
 import { useMemo } from 'react';
 import { useEffect } from 'react';
 import NoResultsFound from '../components/Search/NoResultsFound';
+import GoToTop from '../components/GoToTop/GoToTop';
 
 const SearchPage = ({ history }) => {
   //Getting the parameters of the query
@@ -65,6 +66,7 @@ const SearchPage = ({ history }) => {
 
   return (
     <>
+      <GoToTop />
       <div className='container --w-100 --center'>
         <div className='container --w-75 --gap-2 --center-row --padding-regular --warp --mt-large'>
           {images?.length < 1 && <NoResultsFound />}

@@ -6,13 +6,16 @@
   transition: color 200ms ease-in-out;
   &--hover {
     &-primary:hover {
-      color: darken($color: $primary, $amount: 10);
+      color: lighten($color: $primary, $amount: 10);
     }
     &-black:hover {
       color: lighten($color: $black, $amount: 10);
     }
     &-gray:hover {
       color: darken($color: $gray, $amount: 10);
+    }
+    &-error:hover {
+      color: lighten($color: $red, $amount: 10);
     }
   }
   &--center {

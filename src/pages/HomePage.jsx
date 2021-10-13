@@ -14,6 +14,7 @@ import {
   PREVIOUS_SECCTION,
   RANGE,
 } from '../models/constants/pagination';
+import GoToTop from '../components/GoToTop/GoToTop';
 
 const HomePage = () => {
   //Add the user to the database if it doesn't exist
@@ -68,6 +69,7 @@ const HomePage = () => {
 
   return (
     <>
+      <GoToTop />
       <div className='container --w-100 --center'>
         <div className='container --w-75 --gap-2 --center-row --padding-regular --warp --mt-large'>
           {!response?.data ? (

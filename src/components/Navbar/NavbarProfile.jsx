@@ -78,7 +78,7 @@ const NavbarProfile = ({ uid, photoURL }) => {
               <Link
                 className='text text--size-regular text--decoration-none text--hover-primary --float-left'
                 to={`/user/profile?id=${encodeURI(uid)}&s=${section.LIKES}`}>
-                Liked
+                Likes
               </Link>
             </div>
             <div>
@@ -92,7 +92,7 @@ const NavbarProfile = ({ uid, photoURL }) => {
                 to={`/user/profile?id=${encodeURI(uid)}&s=${
                   section.BOOKMARKS
                 }`}>
-                Favorites
+                Bookmarks
               </Link>
             </div>
             <div>
@@ -114,7 +114,7 @@ const NavbarProfile = ({ uid, photoURL }) => {
                 alt=''
               />
               <p
-                className='text text--size-regular text--decoration-none text--hover-primary --float-left'
+                className='text text--size-regular text--decoration-none text--color-error text--hover-error --float-left'
                 onClick={Logout}>
                 Logout
               </p>
