@@ -19,10 +19,8 @@ const GoToTop = () => {
   });
 
   useEffect(() => {
-    window.addEventListener('load', activeOnScroll);
     window.addEventListener('scroll', activeOnScroll);
     return () => {
-      window.removeEventListener('load', activeOnScroll);
       window.removeEventListener('scroll', activeOnScroll);
     };
   }, []);
