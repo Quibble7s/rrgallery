@@ -1,4 +1,4 @@
-const k = 'client_id=';
+const k = 'client_id=lirba6ghVGu1uzhSgzE5RVKs80hfdQcRBJTJFvx34d8';
 const apiRoute = 'https://api.unsplash.com';
 const perPage = 18;
 
@@ -38,7 +38,7 @@ export const downloadImage = async (img) => {
   await fetch(downloadLink)
     .then(() => {
       const a = document.createElement('a');
-      a.href = `${img.links.download}?force=true`;
+      a.href = `${img.links.download}&force=true`;
       a.download = `${img.id}.jpg`;
       document.body.appendChild(a);
       a.click();
