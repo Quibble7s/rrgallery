@@ -62,6 +62,8 @@ const ProfileSocialImages = ({ selectedSection }) => {
               src={`${url}&w=512&ar=3:4&fit=crop`}
               alt='512'
               id={getID(url)}
+              width='512'
+              height='683'
             />
           );
         })

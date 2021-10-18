@@ -66,6 +66,8 @@ const ImageCard = ({ img = {} }) => {
             }
             alt={img.alt_description ? img.alt_description : 'img'}
             crossOrigin='anonymous'
+            width='512'
+            height='683'
           />
         </div>
         <div className='card-user'>

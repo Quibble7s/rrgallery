@@ -1,4 +1,4 @@
-const k = 'client_id=lirba6ghVGu1uzhSgzE5RVKs80hfdQcRBJTJFvx34d8';
+const k = 'client_id=';
 const apiRoute = 'https://api.unsplash.com';
 const perPage = 18;
 

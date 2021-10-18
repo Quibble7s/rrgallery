@@ -3,8 +3,6 @@ import React, { memo } from 'react';
 import { useSocialEvents } from '../../hooks/useSocialEvents';
 import { useGetImageWithLocation } from '../../hooks/useGetImageWithLocation';
 
-import LoadingDotsLine from '../Loading/LoadingDotsLine';
-
 import downSvg from '../../assets/img/download.svg';
 import bookmarkImage from '../../assets/img/bookmark.svg';
 import likeImage from '../../assets/img/heart.svg';
@@ -45,7 +43,7 @@ const FullView = () => {
       <div className='container --center-horizontal'>
         <div className='fullview-content --mb-large --mt-large'>
           {!img ? (
-            <LoadingDotsLine />
+            <Loading maxWidth='128px' className='loading --center' />
           ) : (
             <>
               <div className='fullview-content-top --mb-small'>
@@ -78,6 +76,8 @@ const FullView = () => {
                     : `${img?.urls.raw}&w=${userPreferences[0]}`
                 }
                 alt={img?.alt_description ? img?.alt_description : 'img'}
+                width={img.width}
+                height={img.height}
                 crossOrigin='anonymous'
               />
               <div className='fullview-content-actions'>

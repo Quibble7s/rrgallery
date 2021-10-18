@@ -18,7 +18,6 @@ import backgroundBottom from '../assets/img/background/background-bottom.svg';
 import '../sass/pages/login.scss';
 import '../sass/components/Input/input.scss';
 import '../sass/text.scss';
-import Loading from '../components/Loading/Loading';
 
 const AuthLogin = () => {
   const dispatch = useDispatch();

@@ -69,6 +69,8 @@
       &__img {
         opacity: 0;
         width: calc(100% / 3.5);
+        height: auto;
+        object-fit: contain;
         transition: opacity 200ms ease-in-out;
         &--loaded {
           opacity: 1;

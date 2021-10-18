@@ -16,14 +16,14 @@ const GoToTop = () => {
     } else {
       setVisible('go-to-top go-to-top--fade-out');
     }
-  });
+  }, [setVisible]);
 
   useEffect(() => {
     window.addEventListener('scroll', activeOnScroll);
     return () => {
       window.removeEventListener('scroll', activeOnScroll);
     };
-  }, []);
+  }, [activeOnScroll]);
 
   return (
     <button

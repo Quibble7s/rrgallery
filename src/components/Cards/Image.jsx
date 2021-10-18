@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-const Image = ({ className, src, alt, id, onLoadClassName }) => {
+const Image = ({ className, src, alt, id, onLoadClassName, ...rest }) => {
   const history = useHistory();
   const onClickHandler = () => {
     history.push(`/photo?id=${id}`);
@@ -15,6 +15,7 @@ const Image = ({ className, src, alt, id, onLoadClassName }) => {
       className={className}
       src={src}
       alt={alt}
+      {...rest}
     />
   );
 };

@@ -24,7 +24,9 @@
     }
     &__image {
       width: 100%;
+      height: auto;
       opacity: 0;
+      object-fit: contain;
       transition: opacity 200ms ease-in-out;
       &--loaded {
         opacity: 1;
