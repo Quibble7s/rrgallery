@@ -26,7 +26,9 @@ const ImageRadioButton = ({
   };
 
   return (
-    <label className={active ? `${className} ${activeClassName}` : className} htmlFor={id}>
+    <label
+      className={active ? `${className} ${activeClassName}` : className}
+      htmlFor={id}>
       <img
         className={`image-radio-button__img ${imgClassModifiers}`}
         src={active ? activeImg : img}

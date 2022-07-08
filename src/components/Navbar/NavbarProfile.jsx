@@ -47,10 +47,10 @@ const NavbarProfile = ({ uid, photoURL }) => {
   }, [onClick]);
 
   return (
-    <div className='nav-profile'>
+    <div className='border border-gray-400 rounded-full cursor-pointer hover:border-green-400'>
       <img
         id='profile'
-        className='nav-profile__pfp'
+        className='w-8'
         src={photoURL ? photoURL : defaultPfp}
         alt='pfp'
       />

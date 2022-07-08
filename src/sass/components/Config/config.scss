@@ -99,3 +99,13 @@
     flex: 0 0 auto;
   }
 }
+
+@media (max-width: 768px) {
+  .config {
+    &-preferences {
+      &-selection {
+        width: 100%;
+      }
+    }
+  }
+}

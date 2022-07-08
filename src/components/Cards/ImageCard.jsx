@@ -47,8 +47,8 @@ const ImageCard = ({ img = {} }) => {
   return (
     <>
       <LoginPopup active={displayPopup} setDisplayPopup={setDisplayPopup} />
-      <div className='card'>
-        <div className='card-img-wrapper'>
+      <div className='w-full flex flex-col gap-4 shadow-md p-4 rounded-md'>
+        <div className='card-img-wrapper w-full'>
           {loading ? (
             <div className='card-img-overlay card-img-overlay--loading'>
               <Loading maxWidth='128px' />
@@ -66,8 +66,8 @@ const ImageCard = ({ img = {} }) => {
             }
             alt={img.alt_description ? img.alt_description : 'img'}
             crossOrigin='anonymous'
-            width='512'
-            height='683'
+            width='512px'
+            height='683px'
           />
         </div>
         <div className='card-user'>

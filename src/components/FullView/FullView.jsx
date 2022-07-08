@@ -14,6 +14,7 @@ import Loading from '../Loading/Loading';
 import { useGetPreferences } from '../../hooks/useGetPreferences';
 import { useSelector } from 'react-redux';
 import LoginPopup from '../Popups/LoginPopup';
+import { Container } from '../Layout/Container';
 
 const FullView = () => {
   const { auth } = useSelector((state) => state);
@@ -40,12 +41,12 @@ const FullView = () => {
   return (
     <>
       <LoginPopup active={displayPopup} setDisplayPopup={setDisplayPopup} />
-      <div className='container --center-horizontal'>
-        <div className='fullview-content --mb-large --mt-large'>
-          {!img ? (
-            <Loading maxWidth='128px' className='loading --center' />
-          ) : (
-            <>
+      <div className='w-full min-h-screen'>
+        {!img ? (
+          <Loading maxWidth='128px' className='loading --center' />
+        ) : (
+          <Container className='py-8'>
+            <div className='shadow-md rounded-md'>
               <div className='fullview-content-top --mb-small'>
                 <a
                   className='card-user__img'
@@ -114,9 +115,9 @@ const FullView = () => {
                 )}
               </div>
               <span className='fullview-content-divisor' />
-            </>
-          )}
-        </div>
+            </div>
+          </Container>
+        )}
       </div>
     </>
   );

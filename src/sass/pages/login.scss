@@ -11,6 +11,10 @@
   }
 }
 
+.blur-ball {
+  filter: blur(32px);
+}
+
 .login {
   width: 80%;
   display: flex;

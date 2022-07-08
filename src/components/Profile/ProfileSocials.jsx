@@ -9,6 +9,7 @@ import ActiveLikeImage from '../../assets/img/heart-active.svg';
 import BookmarkImage from '../../assets/img/bookmark.svg';
 import ActiveBookmarkImage from '../../assets/img/bookmark-active.svg';
 import ProfileSocialImages from './ProfileSocialImages';
+import { Container } from '../Layout/Container';
 
 import { section } from '../../models/constants/profileSections';
 import { useLocation } from 'react-router-dom';
@@ -34,13 +35,13 @@ const ProfileSocials = () => {
   };
 
   return (
-    <div className='profile-socials'>
-      <div className='profile-socials-wrapper'>
+    <Container className='py-8'>
+      <div className='w-full shadow-md p-4 rounded-md'>
         <ProfileHeader />
-        <div className='profile-socials-selectors'>
+        <div className='w-full grid grid-cols-2 gap-8 mb-8'>
           <ImageRadioButton
-            className='profile-socials-selectors__selector'
-            activeClassName='profile-socials-selectors__selector--active'
+            className='w-full cursor-pointer bg-gray-100 flex flex-row items-center justify-center rounded-md transition-all duration-200'
+            activeClassName='p-2 bg-gray-200 cursor-not-allowed'
             img={LikeImage}
             activeImg={ActiveLikeImage}
             onCheckedCallback={onSocialSelectedHandler}
@@ -51,8 +52,8 @@ const ProfileSocials = () => {
           />
           {auth.uid === id && (
             <ImageRadioButton
-              className='profile-socials-selectors__selector'
-              activeClassName='profile-socials-selectors__selector--active'
+              className='w-full cursor-pointer bg-gray-100 flex flex-row items-center justify-center rounded-md transition-all duration-200'
+              activeClassName='p-2 bg-gray-200 cursor-not-allowed'
               img={BookmarkImage}
               activeImg={ActiveBookmarkImage}
               onCheckedCallback={onSocialSelectedHandler}
@@ -63,11 +64,11 @@ const ProfileSocials = () => {
             />
           )}
         </div>
-        <div className='profile-socials-container'>
+        <div className='w-full grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4'>
           <ProfileSocialImages selectedSection={socialSelected} />
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

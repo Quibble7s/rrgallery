@@ -16,6 +16,7 @@ import { useMemo } from 'react';
 import { useEffect } from 'react';
 import NoResultsFound from '../components/Search/NoResultsFound';
 import GoToTop from '../components/GoToTop/GoToTop';
+import { Container } from '../components/Layout/Container';
 
 const SearchPage = ({ history }) => {
   //Getting the parameters of the query
@@ -67,25 +68,29 @@ const SearchPage = ({ history }) => {
   return (
     <>
       <GoToTop />
-      <div className='container --w-100 --center'>
-        <div className='container --w-75 --gap-2 --center-row --padding-regular --warp --mt-large'>
-          {images?.length < 1 && <NoResultsFound />}
-          {!images ? (
-            <LoadingDotsLine />
-          ) : (
-            images?.map((img) => <ImageCard key={img.id} img={img} />)
-          )}
-          {images && pages > 0 && (
-            <Pagination
-              currentPage={currentPage}
-              startPage={startPage}
-              endPage={endPage}
-              totalPages={pages}
-              range={RANGE}
-              onPageChange={onPageChangeHandler}
-            />
-          )}
-        </div>
+      <div className='w-full min-h-screen flex flex-col gap-4 py-8 items-center justify-between'>
+        {images?.length < 1 && <NoResultsFound />}
+        {!images ? (
+          <LoadingDotsLine />
+        ) : (
+          <Container>
+            <div className='w-full grid gird-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+              {images?.map((img) => (
+                <ImageCard key={img.id} img={img} />
+              ))}
+            </div>
+          </Container>
+        )}
+        {images && pages > 0 && (
+          <Pagination
+            currentPage={currentPage}
+            startPage={startPage}
+            endPage={endPage}
+            totalPages={pages}
+            range={RANGE}
+            onPageChange={onPageChangeHandler}
+          />
+        )}
       </div>
     </>
   );

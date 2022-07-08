@@ -57,7 +57,7 @@ const ProfileSocialImages = ({ selectedSection }) => {
           return (
             <Image
               key={url}
-              className='profile-socials-container__img'
+              className='w-full rounded-md'
               onLoadClassName='profile-socials-container__img--loaded'
               src={`${url}&w=512&ar=3:4&fit=crop`}
               alt='512'
@@ -68,7 +68,11 @@ const ProfileSocialImages = ({ selectedSection }) => {
           );
         })
       ) : (
-        <LoadingDotsCircle />
+        <>
+          <LoadingDotsCircle />
+          <LoadingDotsCircle />
+          <LoadingDotsCircle />
+        </>
       )}
     </>
   );

@@ -8,6 +8,7 @@ import { addUser } from '../helpers/Firebase/database';
 import ImageCard from '../components/Cards/ImageCard';
 import LoadingDotsLine from '../components/Loading/LoadingDotsLine';
 import Pagination from '../components/Pagination/Pagination';
+import { Container } from '../components/Layout/Container';
 
 import {
   NEXT_SECCTION,
@@ -70,24 +71,28 @@ const HomePage = () => {
   return (
     <>
       <GoToTop />
-      <div className='container --w-100 --center'>
-        <div className='container --w-75 --gap-2 --center-row --padding-regular --warp --mt-large'>
-          {!response?.data ? (
-            <LoadingDotsLine />
-          ) : (
-            response?.data.map((img) => <ImageCard key={img.id} img={img} />)
-          )}
-          {response?.data && (
-            <Pagination
-              startPage={startPage}
-              endPage={endPage}
-              currentPage={currentPage}
-              range={range}
-              totalPages={response?.nTotal}
-              onPageChange={onPageChangeHandler}
-            />
-          )}
-        </div>
+      <div className='w-full min-h-screen flex flex-col gap-4 py-8 items-center justify-end'>
+        {!response?.data ? (
+          <LoadingDotsLine />
+        ) : (
+          <Container>
+            <div className='w-full grid gird-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+              {response?.data.map((img) => (
+                <ImageCard key={img.id} img={img} />
+              ))}
+            </div>
+          </Container>
+        )}
+        {response?.data && (
+          <Pagination
+            startPage={startPage}
+            endPage={endPage}
+            currentPage={currentPage}
+            range={range}
+            totalPages={response?.nTotal}
+            onPageChange={onPageChangeHandler}
+          />
+        )}
       </div>
     </>
   );

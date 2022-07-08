@@ -5,7 +5,7 @@ import '../sass/components/Config/config.scss';
 
 const UserConfig = () => {
   return (
-    <div className='container --center-horizontal'>
+    <div className='w-full h-screen'>
       <Config />
     </div>
   );

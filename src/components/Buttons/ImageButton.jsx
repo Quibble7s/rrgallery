@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 const ImageButton = ({
   className,
   value,
   imgSrc,
-  type = "",
+  type = '',
   onClick = () => null,
 }) => {
   return (
